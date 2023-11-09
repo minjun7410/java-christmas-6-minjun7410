@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class DayTest {
     @Test
@@ -26,10 +27,17 @@ public class DayTest {
         Day day = new Day(input);
         assertThat(day.isStarDay()).isTrue();
     }
+
     @ParameterizedTest
     @ValueSource(ints = {5, 22})
     void 주문_날짜_별_아닌_날짜_테스트(int input) {
         Day day = new Day(input);
         assertThat(day.isStarDay()).isFalse();
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {0, 32})
+    void 날짜_유효하지_않은_범위_테스트(int input) {
+        assertThatThrownBy(() -> new Day(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }
