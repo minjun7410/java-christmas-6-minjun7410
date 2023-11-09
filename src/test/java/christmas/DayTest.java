@@ -21,9 +21,15 @@ public class DayTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {3, 25, 5, 29}, booleans = {true, true, false, false})
-    void 주문_날짜_별_테스트(int input, boolean result) {
+    @ValueSource(ints = {3, 25})
+    void 주문_날짜_별인_날짜_테스트(int input) {
         Day day = new Day(input);
-        assertThat(day.isStarDay()).isEqualTo(result);
+        assertThat(day.isStarDay()).isTrue();
+    }
+    @ParameterizedTest
+    @ValueSource(ints = {5, 22})
+    void 주문_날짜_별_아닌_날짜_테스트(int input) {
+        Day day = new Day(input);
+        assertThat(day.isStarDay()).isFalse();
     }
 }
