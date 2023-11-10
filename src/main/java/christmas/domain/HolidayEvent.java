@@ -16,4 +16,12 @@ public class HolidayEvent {
     public boolean isDiscountable() {
         return presentDay.isHoliday();
     }
+
+    public int getDiscountedAmount() {
+        int menuCount = orderSheet.keySet().stream()
+                .filter(menu -> menu.compareType(MenuType.MAIN))
+                .map(orderSheet::get)
+                .reduce(0, Integer::sum);
+        return UNIT_AMOUNT * menuCount;
+    }
 }

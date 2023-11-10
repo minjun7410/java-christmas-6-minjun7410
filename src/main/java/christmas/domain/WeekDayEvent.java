@@ -20,10 +20,10 @@ public class WeekDayEvent {
     }
 
     public int getDiscountedAmount() {
-        int discountedAmount = orderSheet.keySet().stream()
+        int menuCount = orderSheet.keySet().stream()
                 .filter(menu -> menu.compareType(MenuType.DESERT))
                 .map(orderSheet::get)
                 .reduce(0, Integer::sum);
-        return UNIT_AMOUNT * discountedAmount;
+        return UNIT_AMOUNT * menuCount;
     }
 }
