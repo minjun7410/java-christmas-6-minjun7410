@@ -32,4 +32,12 @@ public class OrderSheetTest {
         menuCounts.put("바비큐립", 21);
         assertThatThrownBy(() -> new OrderSheet(menuCounts)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 메뉴_음료만_예외처리_테스트() {
+        Map<String, Integer> menuCounts = new HashMap<>();
+        menuCounts.put("제로콜라", 1);
+        menuCounts.put("레드와인", 1);
+        assertThatThrownBy(() -> new OrderSheet(menuCounts)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
