@@ -2,6 +2,7 @@ package christmas.domain;
 
 public class ChristmasEvent {
     private static final int START_DAY = 1;
+    private static final int END_DAY = 25;
     private static final int BASE_AMOUNT = 1000;
     private static final int UNIT_AMOUNT = 100;
 
@@ -11,6 +12,10 @@ public class ChristmasEvent {
     public ChristmasEvent(Day presentDay) {
         this.presentDay = presentDay;
         this.startDay = new Day(START_DAY);
+    }
+
+    public boolean isDiscountable() {
+        return presentDay.isInBetween(START_DAY, END_DAY);
     }
 
     public int getDiscountedAmount() {
