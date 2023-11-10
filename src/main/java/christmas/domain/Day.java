@@ -23,6 +23,10 @@ public class Day {
         return starDays.contains(day);
     }
 
+    public boolean isHoliday() {
+        return DayOfWeek.isHoliday(day);
+    }
+
     public int getDifference(Day targetDay) {
         return this.day - targetDay.day;
     }

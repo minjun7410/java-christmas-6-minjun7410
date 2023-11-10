@@ -2,6 +2,7 @@ package christmas;
 
 import christmas.domain.Day;
 import christmas.domain.Menu;
+import christmas.domain.WeekDayEvent;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
