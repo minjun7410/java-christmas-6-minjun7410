@@ -40,4 +40,11 @@ public class OrderSheetTest {
         menuCounts.put("레드와인", 1);
         assertThatThrownBy(() -> new OrderSheet(menuCounts)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 총주문금액_만원_이하_예외처리_테스트() {
+        Map<String, Integer> menuCounts = new HashMap<>();
+        menuCounts.put("제로콜라", 1);
+        assertThatThrownBy(() -> new OrderSheet(menuCounts)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
