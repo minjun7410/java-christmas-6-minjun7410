@@ -23,6 +23,10 @@ public class Day {
         return starDays.contains(day);
     }
 
+    public int getDifference(Day targetDay) {
+        return this.day - targetDay.day;
+    }
+
     private void validateDayRange() {
         if (START_DAY_OF_MONTH <= day && day <= END_DAY_OF_MONTH) return;
         throw new IllegalArgumentException(INVALID_DAY_TEXT);
