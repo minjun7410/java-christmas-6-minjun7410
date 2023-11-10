@@ -40,4 +40,12 @@ public class DayTest {
     void 날짜_유효하지_않은_범위_테스트(int input) {
         assertThatThrownBy(() -> new Day(input)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 백원_추가될_날짜_계산_테스트() {
+        Day startDay = new Day(1);
+        Day presentDay = new Day(25);
+        int dayDifferent = presentDay.getDifference(startDay);
+        assertThat(dayDifferent).isEqualTo(24);
+    }
 }
