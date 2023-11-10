@@ -1,5 +1,6 @@
 package christmas;
 
+import christmas.domain.ChristmasEvent;
 import christmas.domain.Day;
 import org.junit.jupiter.api.Test;
 
