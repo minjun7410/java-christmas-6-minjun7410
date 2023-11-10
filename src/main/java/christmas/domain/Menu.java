@@ -28,6 +28,10 @@ public enum Menu {
         return (this.menuType == menuType);
     }
 
+    public int getPrice() {
+        return this.price;
+    }
+
     public static Menu getMenuByName(String menuName) {
         for (Menu menu : Menu.values()) {
             if (menu.name.equals(menuName)) return menu;

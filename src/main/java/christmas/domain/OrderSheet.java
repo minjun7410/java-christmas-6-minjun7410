@@ -20,6 +20,13 @@ public class OrderSheet {
         return menuCount;
     }
 
+    public int getTotalPrice() {
+        int totalPrice = orderSheet.keySet().stream()
+                .map(menu -> menu.getPrice() * orderSheet.get(menu))
+                .reduce(0, Integer::sum);
+        return totalPrice;
+    }
+
     private void countMenu(Map<String, Integer> menus) {
         for (String menuName : menus.keySet()) {
             Menu menu = Menu.getMenuByName(menuName);
