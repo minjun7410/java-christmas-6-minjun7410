@@ -20,4 +20,11 @@ public class StarEventTest {
         StarEvent starEvent = new StarEvent(day);
         assertThat(starEvent.isDiscountable()).isFalse();
     }
+
+    @Test
+    void 할인_금액_계산_테스트() {
+        Day day = new Day(25);
+        StarEvent starEvent = new StarEvent(day);
+        assertThat(starEvent.getDiscountedAmount()).isEqualTo(1000);
+    }
 }
