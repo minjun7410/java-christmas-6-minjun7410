@@ -28,4 +28,14 @@ public class WeekDayEventTest {
         WeekDayEvent weekDayEvent = new WeekDayEvent(day, orderSheet);
         assertThat(weekDayEvent.isDiscountable()).isFalse();
     }
+
+    @Test
+    void 할인_금액_계산_기능_테스트() {
+        Day day = new Day(3);
+        Map<Menu, Integer> orderSheet = new HashMap<>();
+        orderSheet.put(Menu.CHOCO_CAKE, 1);
+        orderSheet.put(Menu.ICECREAM, 1);
+        WeekDayEvent weekDayEvent = new WeekDayEvent(day, orderSheet);
+        assertThat(weekDayEvent.getDiscountedAmount()).isEqualTo(2023 * 2);
+    }
 }
