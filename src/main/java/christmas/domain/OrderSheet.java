@@ -1,17 +1,17 @@
 package christmas.domain;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class OrderSheet {
     private static final String EXCEED_MENU_COUNT_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
+    private static final String ONLY_DRINK_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private Map<Menu, Integer> orderSheet;
 
     public OrderSheet(Map<String, Integer> menus) {
         validateExceedMenuCount(menus);
         orderSheet = new HashMap<>();
         countMenu(menus);
+        validateOnlyDrink();
     }
 
     public int getMenuCountByMenuType(MenuType menuType) {
@@ -41,5 +41,12 @@ public class OrderSheet {
                 .reduce(0, Integer::sum);
         if (totalMenuCount <= 20) return;
         throw new IllegalArgumentException(EXCEED_MENU_COUNT_TEXT);
+    }
+
+    private void validateOnlyDrink() {
+        int drinkCount = (int) orderSheet.keySet().stream()
+                .filter(menu -> menu.compareType(MenuType.DRINK))
+                .count();
+        if (drinkCount == orderSheet.size()) throw new IllegalArgumentException(ONLY_DRINK_TEXT);
     }
 }
