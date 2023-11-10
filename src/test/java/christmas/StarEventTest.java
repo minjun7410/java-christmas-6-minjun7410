@@ -15,7 +15,7 @@ public class StarEventTest {
     }
 
     @Test
-    void 할인_적용_가능_테스트() {
+    void 할인_적용_불가능_테스트() {
         Day day = new Day(26);
         StarEvent starEvent = new StarEvent(day);
         assertThat(starEvent.isDiscountable()).isFalse();
