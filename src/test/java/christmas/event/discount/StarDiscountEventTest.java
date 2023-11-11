@@ -1,7 +1,7 @@
-package christmas.event;
+package christmas.event.discount;
 
 import christmas.domain.Day;
-import christmas.domain.event.StarDiscountEvent;
+import christmas.domain.event.discount.StarDiscountEvent;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

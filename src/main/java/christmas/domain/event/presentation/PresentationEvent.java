@@ -1,4 +1,6 @@
-package christmas.domain;
+package christmas.domain.event.presentation;
+
+import christmas.domain.OrderSheet;
 
 public class PresentationEvent {
     private static final int BASE_AMOUNT = 120000;

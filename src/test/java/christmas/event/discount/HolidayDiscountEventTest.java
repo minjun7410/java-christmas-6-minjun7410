@@ -1,7 +1,7 @@
-package christmas.event;
+package christmas.event.discount;
 
 import christmas.domain.Day;
-import christmas.domain.event.HolidayDiscountEvent;
+import christmas.domain.event.discount.HolidayDiscountEvent;
 import christmas.domain.OrderSheet;
 import org.junit.jupiter.api.Test;
 
