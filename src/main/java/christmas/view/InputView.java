@@ -19,6 +19,31 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
+    public Map<String, Integer> readMenu() {
+        System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
+        String input = Console.readLine();
+        return getMenus(input);
+    }
+
+    private Map<String, Integer> getMenus(String input) {
+        Map<String, Integer> menus = new HashMap<>();
+        String[] inputs = splitInput(input);
+        for (String menu : inputs) {
+            String[] splitMenu = menu.trim().split("-");
+            validateInputFormat(splitMenu);
+            validateIsNumber(splitMenu[1]);
+            validateDuplicatedMenu(menus.keySet(), splitMenu[0]);
+            menus.put(splitMenu[0], Integer.parseInt(splitMenu[1]));
+        }
+        return menus;
+    }
+
+    private String[] splitInput(String input) {
+        String[] inputs = input.split(",");
+        validateNoMenu(inputs);
+        return inputs;
+    }
+
     private void validateIsNumber(String input) {
         if (input.matches("\\d+")) return;
         throw new IllegalArgumentException(WRONG_DAY_TEXT);
