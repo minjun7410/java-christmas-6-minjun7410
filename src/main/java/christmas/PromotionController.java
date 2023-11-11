@@ -17,6 +17,7 @@ public class PromotionController {
     }
 
     public void run() {
+        outputView.printStart();
         Day orderDay = getOrderDay();
         OrderSheet orderSheet = getOrderSheet();
     }
