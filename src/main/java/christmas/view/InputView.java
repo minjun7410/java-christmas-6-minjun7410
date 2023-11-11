@@ -12,7 +12,7 @@ public class InputView {
     }
 
     private void validateIsNumber(String input) {
-        if (input.matches("\\d")) return;
+        if (input.matches("\\d+")) return;
         throw new IllegalArgumentException(WRONG_DAY_TEXT);
     }
 }
