@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class InputView {
     private static final String WRONG_DAY_TEXT = "유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+    private static final String WRONG_MENU_NUMBER_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private static final String WRONG_TYPE_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private static final String NO_MENU_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private static final String DUPLICATE_MENU_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
@@ -15,7 +16,7 @@ public class InputView {
     public int readDate() {
         System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
         String input = Console.readLine();
-        validateIsNumber(input);
+        validateIsNumber(input, WRONG_DAY_TEXT);
         return Integer.parseInt(input);
     }
 
@@ -31,7 +32,7 @@ public class InputView {
         for (String menu : inputs) {
             String[] splitMenu = menu.trim().split("-");
             validateInputFormat(splitMenu);
-            validateIsNumber(splitMenu[1]);
+            validateIsNumber(splitMenu[1], WRONG_MENU_NUMBER_TEXT);
             validateDuplicatedMenu(menus.keySet(), splitMenu[0]);
             menus.put(splitMenu[0], Integer.parseInt(splitMenu[1]));
         }
@@ -44,9 +45,9 @@ public class InputView {
         return inputs;
     }
 
-    private void validateIsNumber(String input) {
+    private void validateIsNumber(String input, String errorMessage) {
         if (input.matches("\\d+")) return;
-        throw new IllegalArgumentException(WRONG_DAY_TEXT);
+        throw new IllegalArgumentException(errorMessage);
     }
 
     private void validateInputFormat(String[] inputs) {
