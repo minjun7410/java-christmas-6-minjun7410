@@ -15,4 +15,9 @@ public class InputView {
         if (input.matches("\\d+")) return;
         throw new IllegalArgumentException(WRONG_DAY_TEXT);
     }
+
+    private void validateInputFormat(String[] input) {
+        if (input.length == 2) return;
+        throw new IllegalArgumentException(WRONG_TYPE_TEXT);
+    }
 }
