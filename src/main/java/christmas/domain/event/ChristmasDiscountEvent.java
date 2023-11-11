@@ -1,6 +1,8 @@
-package christmas.domain;
+package christmas.domain.event;
 
-public class ChristmasEvent {
+import christmas.domain.Day;
+
+public class ChristmasDiscountEvent implements DiscountEvent {
     private static final int START_DAY = 1;
     private static final int END_DAY = 25;
     private static final int BASE_AMOUNT = 1000;
@@ -9,15 +11,17 @@ public class ChristmasEvent {
     private final Day presentDay;
     private final Day startDay;
 
-    public ChristmasEvent(Day presentDay) {
+    public ChristmasDiscountEvent(Day presentDay) {
         this.presentDay = presentDay;
         this.startDay = new Day(START_DAY);
     }
 
+    @Override
     public boolean isDiscountable() {
         return presentDay.isInBetween(START_DAY, END_DAY);
     }
 
+    @Override
     public int getDiscountedAmount() {
         int dayDifference = presentDay.getDifference(startDay);
         return BASE_AMOUNT + (UNIT_AMOUNT * dayDifference);

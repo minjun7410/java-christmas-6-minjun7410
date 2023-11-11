@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class PresentationEventTest {
+public class PresentationDiscountEventTest {
     @Test
     void 총_주문금액_12만원_이상_테스트() {
         Map<String, Integer> menuCounts = new HashMap<>();

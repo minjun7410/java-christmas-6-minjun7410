@@ -1,20 +1,26 @@
-package christmas.domain;
+package christmas.domain.event;
 
-public class HolidayEvent {
+import christmas.domain.Day;
+import christmas.domain.MenuType;
+import christmas.domain.OrderSheet;
+
+public class HolidayDiscountEvent implements DiscountEvent {
     private static final int UNIT_AMOUNT = 2023;
 
     private final Day presentDay;
     private final OrderSheet orderSheet;
 
-    public HolidayEvent(Day presentDay, OrderSheet orderSheet) {
+    public HolidayDiscountEvent(Day presentDay, OrderSheet orderSheet) {
         this.presentDay = presentDay;
         this.orderSheet = orderSheet;
     }
 
+    @Override
     public boolean isDiscountable() {
         return presentDay.isHoliday();
     }
 
+    @Override
     public int getDiscountedAmount() {
         int menuCount = orderSheet.getMenuCountByMenuType(MenuType.MAIN);
         return UNIT_AMOUNT * menuCount;
