@@ -3,6 +3,7 @@ package christmas.event.presentation;
 import christmas.domain.Menu;
 import christmas.domain.OrderSheet;
 import christmas.domain.event.presentation.PresentationEventManager;
+import christmas.domain.event.presentation.PresentationResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,8 @@ import java.util.Map;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class PresentationResultTest {
+    PresentationResult presentationResult;
+
     @BeforeEach
     void beforEach() {
         Map<String, Integer> menuCounts = new HashMap<>();
@@ -20,7 +23,7 @@ public class PresentationResultTest {
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
         List<Menu> presentations = PresentationEventManager.getPresentations(orderSheet);
-        PresentationResult presentationResult = new PresentationResult(presentations);
+        presentationResult = new PresentationResult(presentations);
     }
 
     @Test
