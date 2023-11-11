@@ -1,7 +1,7 @@
 package christmas.event.presentation;
 
 import christmas.domain.OrderSheet;
-import christmas.domain.event.presentation.PresentationEvent;
+import christmas.domain.event.presentation.ChampagnePresentationEvent;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -16,8 +16,8 @@ public class PresentationDiscountEventTest {
         menuCounts.put("바비큐립", 3);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        PresentationEvent presentationEvent = new PresentationEvent(orderSheet);
-        assertThat(presentationEvent.isDiscountable()).isTrue();
+        ChampagnePresentationEvent champagnePresentationEvent = new ChampagnePresentationEvent(orderSheet);
+        assertThat(champagnePresentationEvent.isPresentable()).isTrue();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class PresentationDiscountEventTest {
         menuCounts.put("바비큐립", 1);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        PresentationEvent presentationEvent = new PresentationEvent(orderSheet);
-        assertThat(presentationEvent.isDiscountable()).isFalse();
+        ChampagnePresentationEvent champagnePresentationEvent = new ChampagnePresentationEvent(orderSheet);
+        assertThat(champagnePresentationEvent.isPresentable()).isFalse();
     }
 }
