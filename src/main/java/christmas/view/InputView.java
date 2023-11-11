@@ -16,8 +16,12 @@ public class InputView {
         throw new IllegalArgumentException(WRONG_DAY_TEXT);
     }
 
-    private void validateInputFormat(String[] input) {
-        if (input.length == 2) return;
+    private void validateInputFormat(String[] inputs) {
+        if (inputs.length == 2) return;
         throw new IllegalArgumentException(WRONG_TYPE_TEXT);
+    }
+
+    private void validateNoMenu(String[] inputs) {
+        if (inputs.length == 0) throw new IllegalArgumentException(NO_MENU_TEXT);
     }
 }
