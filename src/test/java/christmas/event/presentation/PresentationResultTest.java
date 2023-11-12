@@ -22,7 +22,7 @@ public class PresentationResultTest {
         menuCounts.put("바비큐립", 5);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        List<Menu> presentations = PresentationEventManager.getPresentations(orderSheet);
+        List<Menu> presentations = PresentationEventManager.getPresentations(orderSheet).getPresentations();
         presentationResult = new PresentationResult(presentations);
     }
 

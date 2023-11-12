@@ -9,6 +9,10 @@ public class DiscountResult {
         this.discountEvents = discountEvents;
     }
 
+    public List<DiscountEvent> getDiscountEvents() {
+        return this.discountEvents;
+    }
+    
     public int getTotalDiscountAmount() {
         return discountEvents.stream()
                 .map(DiscountEvent::getDiscountedAmount)

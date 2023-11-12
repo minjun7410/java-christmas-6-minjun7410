@@ -19,11 +19,11 @@ public enum DiscountEventManager {
         this.createFunction = createFunction;
     }
 
-    public static List<DiscountEvent> getDiscountableEvents(Day day, OrderSheet orderSheet) {
+    public static DiscountResult getDiscountableEvents(Day day, OrderSheet orderSheet) {
         List<DiscountEvent> discountEvents = Arrays.stream(values())
                 .map(event -> event.createFunction.apply(day, orderSheet))
                 .filter(DiscountEvent::isDiscountable)
                 .toList();
-        return discountEvents;
+        return new DiscountResult(discountEvents);
     }
 }

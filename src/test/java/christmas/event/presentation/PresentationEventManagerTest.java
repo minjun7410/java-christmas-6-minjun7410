@@ -18,7 +18,7 @@ public class PresentationEventManagerTest {
         menuCounts.put("바비큐립", 5);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        List<Menu> presentations = PresentationEventManager.getPresentations(orderSheet);
+        List<Menu> presentations = PresentationEventManager.getPresentations(orderSheet).getPresentations();
         assertThat(presentations.get(0)).isEqualTo(Menu.CHAMPAGNE);
     }
 
@@ -28,7 +28,7 @@ public class PresentationEventManagerTest {
         menuCounts.put("바비큐립", 1);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        List<Menu> presentations = PresentationEventManager.getPresentations(orderSheet);
+        List<Menu> presentations = PresentationEventManager.getPresentations(orderSheet).getPresentations();
         assertThat(presentations.size()).isEqualTo(0);
     }
 }

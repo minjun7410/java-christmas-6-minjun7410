@@ -16,11 +16,12 @@ public enum PresentationEventManager {
         this.createFunction = createFunction;
     }
 
-    public static List<Menu> getPresentations(OrderSheet orderSheet) {
-        return Arrays.stream(values())
+    public static PresentationResult getPresentations(OrderSheet orderSheet) {
+        List<Menu> presentations =  Arrays.stream(values())
                 .map(presentationEvent -> presentationEvent.createFunction.apply(orderSheet))
                 .filter(PresentationEvent::isPresentable)
                 .map(PresentationEvent::getPresentation)
                 .toList();
+        return new PresentationResult(presentations);
     }
 }
