@@ -20,6 +20,7 @@ public class PromotionController {
         outputView.printStart();
         Day orderDay = getOrderDay();
         OrderSheet orderSheet = getOrderSheet();
+        printPreview(orderDay, orderSheet);
     }
 
     private Day getOrderDay() {
@@ -44,5 +45,10 @@ public class PromotionController {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
+    }
+
+    private void printPreview(Day orderDay, OrderSheet orderSheet) {
+        outputView.printPreviewStart();
+
     }
 }
