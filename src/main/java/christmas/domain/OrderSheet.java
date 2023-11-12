@@ -45,6 +45,10 @@ public class OrderSheet {
         return totalPrice;
     }
 
+    public Map<Menu, Integer> getOrderSheet() {
+        return orderSheet;
+    }
+
     private void validateExceedMenuCount(Map<String, Integer> menus) {
         int totalMenuCount = menus.values().stream()
                 .reduce(0, Integer::sum);

@@ -28,6 +28,10 @@ public enum Menu {
         return (this.menuType == menuType);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getPrice() {
         return this.price;
     }

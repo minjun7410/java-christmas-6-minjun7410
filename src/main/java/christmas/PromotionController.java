@@ -49,6 +49,7 @@ public class PromotionController {
 
     private void printPreview(Day orderDay, OrderSheet orderSheet) {
         outputView.printPreviewStart();
+        outputView.printOrderSheet(orderSheet.getOrderSheet());
 
     }
 }
