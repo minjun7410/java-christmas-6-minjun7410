@@ -11,10 +11,16 @@ public class Price {
 
     public void discount(int discountAmount) {
         this.price -= discountAmount;
+        this.price = getItOrZero(this.price);
     }
+
     private String addComma(int price) {
         DecimalFormat formatter = new DecimalFormat("###,###");
         return formatter.format(price);
+    }
+
+    private int getItOrZero(int price) {
+        return Math.max(price, 0);
     }
 
     @Override
