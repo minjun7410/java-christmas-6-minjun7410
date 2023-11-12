@@ -2,6 +2,7 @@ package christmas;
 
 import christmas.domain.Menu;
 import christmas.domain.OrderSheet;
+import christmas.domain.Price;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -22,8 +23,8 @@ public class OrderSheetTest {
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
 
-        int answer = Menu.BBQ_LIP.getPrice() * 2 + Menu.ICECREAM.getPrice();
-        assertThat(orderSheet.getTotalPrice()).isEqualTo(answer);
+        int correctAnswer = Menu.BBQ_LIP.getPrice() * 2 + Menu.ICECREAM.getPrice();
+        assertThat(orderSheet.getTotalPrice().toString()).isEqualTo(new Price(correctAnswer).toString());
     }
 
     @Test
