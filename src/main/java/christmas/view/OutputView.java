@@ -4,6 +4,7 @@ import christmas.domain.Menu;
 import christmas.domain.Price;
 
 import java.sql.SQLOutput;
+import java.util.Collections;
 import java.util.Map;
 
 public class OutputView {
@@ -14,6 +15,9 @@ public class OutputView {
     private static final String ORDER_SHEET_MESSAGE = "%s %d개\n";
     private static final String TOTAL_BEFORE_DISCOUNT_TOP_MESSAGE = "<할인 전 총주문 금액>\n";
     private static final String TOTAL_BEFORE_DISCOUNT_MESSAGE = "%s원\n";
+    private static final String PRESENTATION_TOP_MESSAGE = "<증정 메뉴>\n";
+    private static final String PRESENTATION_MESSAGE = "%s %d개";
+    private static final String NOTHING = "없음\n";
 
     public void printStart() {
         System.out.print(START_MESSAGE);
@@ -39,5 +43,22 @@ public class OutputView {
         System.out.print(TOTAL_BEFORE_DISCOUNT_TOP_MESSAGE);
         System.out.printf(TOTAL_BEFORE_DISCOUNT_MESSAGE, price);
         System.out.println();
+    }
+
+    public void printPresentations(Map<Menu, Integer> presentations) {
+        System.out.print(PRESENTATION_TOP_MESSAGE);
+        if (hasNothing(presentations.size())) return;
+        for (Menu menu : presentations.keySet()) {
+            System.out.printf(PRESENTATION_MESSAGE, menu.getName(), presentations.get(menu));
+        }
+        System.out.println();
+    }
+
+    private boolean hasNothing(int size) {
+        if (size == 0) {
+            System.out.println(NOTHING);
+            return true;
+        }
+        return false;
     }
 }
