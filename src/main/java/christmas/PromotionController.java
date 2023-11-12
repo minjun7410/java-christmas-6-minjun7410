@@ -2,6 +2,7 @@ package christmas;
 
 import christmas.domain.Day;
 import christmas.domain.OrderSheet;
+import christmas.domain.Price;
 import christmas.domain.event.discount.DiscountEventManager;
 import christmas.domain.event.discount.DiscountResult;
 import christmas.domain.event.presentation.PresentationEventManager;
@@ -66,5 +67,6 @@ public class PromotionController {
         DiscountResult discountResult = DiscountEventManager.getDiscountResult(orderDay, orderSheet);
         PresentationResult presentationResult = PresentationEventManager.getPresentationResult(orderSheet);
         outputView.printPresentations(presentationResult.getPresentations());
+        outputView.printEvents(discountResult.getDiscountEvents(), new Price(presentationResult.getTotalPresentationPrice()));
     }
 }

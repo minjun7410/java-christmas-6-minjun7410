@@ -25,4 +25,9 @@ public class HolidayDiscountEvent implements DiscountEvent {
         int menuCount = orderSheet.getMenuCountByMenuType(MenuType.MAIN);
         return UNIT_AMOUNT * menuCount;
     }
+
+    @Override
+    public String toString() {
+        return "주말 할인";
+    }
 }

@@ -26,4 +26,9 @@ public class ChristmasDiscountEvent implements DiscountEvent {
         int dayDifference = presentDay.getDifference(startDay);
         return BASE_AMOUNT + (UNIT_AMOUNT * dayDifference);
     }
+
+    @Override
+    public String toString() {
+        return "크리스마스 디데이 할인";
+    }
 }

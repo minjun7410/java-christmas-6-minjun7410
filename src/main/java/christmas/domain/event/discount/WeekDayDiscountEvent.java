@@ -25,4 +25,9 @@ public class WeekDayDiscountEvent implements DiscountEvent {
         int menuCount = orderSheet.getMenuCountByMenuType(MenuType.DESERT);
         return UNIT_AMOUNT * menuCount;
     }
+
+    @Override
+    public String toString() {
+        return "평일 할인";
+    }
 }

@@ -2,6 +2,7 @@ package christmas.view;
 
 import christmas.domain.Menu;
 import christmas.domain.Price;
+import christmas.domain.event.discount.DiscountEvent;
 
 import java.sql.SQLOutput;
 import java.util.Collections;
@@ -16,7 +17,9 @@ public class OutputView {
     private static final String TOTAL_BEFORE_DISCOUNT_TOP_MESSAGE = "<할인 전 총주문 금액>\n";
     private static final String TOTAL_BEFORE_DISCOUNT_MESSAGE = "%s원\n";
     private static final String PRESENTATION_TOP_MESSAGE = "<증정 메뉴>\n";
-    private static final String PRESENTATION_MESSAGE = "%s %d개";
+    private static final String PRESENTATION_MESSAGE = "%s %d개\n";
+    private static final String EVENTS_TOP_MESSAGE = "<혜택 내역>\n";
+    private static final String EVENT_MESSAGE = "%s: -%s원\n";
     private static final String NOTHING = "없음\n";
 
     public void printStart() {
@@ -51,6 +54,15 @@ public class OutputView {
         for (Menu menu : presentations.keySet()) {
             System.out.printf(PRESENTATION_MESSAGE, menu.getName(), presentations.get(menu));
         }
+        System.out.println();
+    }
+
+    public void printEvents(Map<DiscountEvent, Price> discountEventResult, Price presentationsPrice) {
+        System.out.print(EVENTS_TOP_MESSAGE);
+        for (DiscountEvent event : discountEventResult.keySet()) {
+            System.out.printf(EVENT_MESSAGE, event, discountEventResult.get(event));
+        }
+        System.out.printf(EVENT_MESSAGE, "증정 이벤트", presentationsPrice);
         System.out.println();
     }
 

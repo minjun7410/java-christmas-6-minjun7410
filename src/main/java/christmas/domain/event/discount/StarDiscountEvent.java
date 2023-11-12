@@ -19,4 +19,9 @@ public class StarDiscountEvent implements DiscountEvent {
     public int getDiscountedAmount() {
         return DISCOUNT_AMOUNT;
     }
+
+    @Override
+    public String toString() {
+        return "특별 할인";
+    }
 }
