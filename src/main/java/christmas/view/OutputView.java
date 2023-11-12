@@ -20,6 +20,8 @@ public class OutputView {
     private static final String PRESENTATION_MESSAGE = "%s %d개\n";
     private static final String EVENTS_TOP_MESSAGE = "<혜택 내역>\n";
     private static final String EVENT_MESSAGE = "%s: -%s원\n";
+    private static final String TOTAL_DISCOUNT_TOP_MESSAGE = "<총혜택 금액>\n";
+    private static final String TOTAL_DISCOUNT_MESSAGE = "%s원\n";
     private static final String NOTHING = "없음\n";
 
     public void printStart() {
@@ -64,6 +66,11 @@ public class OutputView {
         }
         System.out.printf(EVENT_MESSAGE, "증정 이벤트", presentationsPrice);
         System.out.println();
+    }
+
+    public void printTotalDiscountPrice(Price price) {
+        System.out.print(TOTAL_DISCOUNT_TOP_MESSAGE);
+        System.out.printf(TOTAL_DISCOUNT_MESSAGE, price);
     }
 
     private boolean hasNothing(int size) {
