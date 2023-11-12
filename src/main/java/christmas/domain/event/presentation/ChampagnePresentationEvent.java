@@ -14,7 +14,7 @@ public class ChampagnePresentationEvent implements PresentationEvent {
 
     @Override
     public boolean isPresentable() {
-        return (orderSheet.getTotalPrice() >= BASE_AMOUNT);
+        return (orderSheet.isMoreThanTotal(BASE_AMOUNT));
     }
 
     @Override

@@ -41,12 +41,16 @@ public class OrderSheet {
         }
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
+    public Price getTotalPrice() {
+        return new Price(totalPrice);
     }
 
     public Map<Menu, Integer> getOrderSheet() {
         return orderSheet;
+    }
+
+    public boolean isMoreThanTotal(int amount) {
+        return totalPrice >= amount;
     }
 
     private void validateExceedMenuCount(Map<String, Integer> menus) {
