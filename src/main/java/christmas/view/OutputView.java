@@ -61,6 +61,7 @@ public class OutputView {
 
     public void printEvents(Map<DiscountEvent, Price> discountEventResult, Price presentationsPrice) {
         System.out.print(EVENTS_TOP_MESSAGE);
+        if (hasNothing(discountEventResult.size())) return;
         for (DiscountEvent event : discountEventResult.keySet()) {
             System.out.printf(EVENT_MESSAGE, event, discountEventResult.get(event));
         }
