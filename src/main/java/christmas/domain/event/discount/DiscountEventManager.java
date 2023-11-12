@@ -3,6 +3,7 @@ package christmas.domain.event.discount;
 import christmas.domain.Day;
 import christmas.domain.OrderSheet;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
@@ -20,10 +21,13 @@ public enum DiscountEventManager {
     }
 
     public static DiscountResult getDiscountResult(Day day, OrderSheet orderSheet) {
-        List<DiscountEvent> discountEvents = Arrays.stream(values())
-                .map(event -> event.createFunction.apply(day, orderSheet))
-                .filter(DiscountEvent::isDiscountable)
-                .toList();
-        return new DiscountResult(discountEvents);
+        if (orderSheet.isMoreThanTotal(10000)) {
+            List<DiscountEvent> discountEvents = Arrays.stream(values())
+                    .map(event -> event.createFunction.apply(day, orderSheet))
+                    .filter(DiscountEvent::isDiscountable)
+                    .toList();
+            return new DiscountResult(discountEvents);
+        }
+        return new DiscountResult(new ArrayList<>());
     }
 }
