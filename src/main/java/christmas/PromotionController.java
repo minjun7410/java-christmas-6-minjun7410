@@ -71,5 +71,6 @@ public class PromotionController {
         outputView.printEvents(discountResult.getDiscountEvents(), new Price(presentationResult.getTotalPresentationPrice()));
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentationResult);
         outputView.printTotalDiscountPrice(totalEventResult.getDiscountPrice());
+        outputView.printDiscountedTotalPrice(totalEventResult.getDiscountedTotalPrice(orderSheet.getTotalPrice()));
     }
 }
