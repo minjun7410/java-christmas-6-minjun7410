@@ -2,6 +2,7 @@ package christmas.event.discount;
 
 import christmas.domain.Day;
 import christmas.domain.OrderSheet;
+import christmas.domain.Price;
 import christmas.domain.event.discount.*;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public class DiscountEventManagerTest {
         orders.put("티본스테이크", 1);
         OrderSheet orderSheet = new OrderSheet(orders);
 
-        List<DiscountEvent> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
+        Map<DiscountEvent, Price> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
         assertThat(discountEventList).satisfies(discountEvents -> {
             assertThat(discountEvents.get(0)).isInstanceOf(ChristmasDiscountEvent.class);
             assertThat(discountEvents.get(1)).isInstanceOf(HolidayDiscountEvent.class);
@@ -34,7 +35,7 @@ public class DiscountEventManagerTest {
         orders.put("바비큐립", 1);
         orders.put("티본스테이크", 1);
         OrderSheet orderSheet = new OrderSheet(orders);
-        List<DiscountEvent> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
+        Map<DiscountEvent, Price> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
         assertThat(discountEventList).satisfies(discountEvents -> {
             assertThat(discountEvents.get(0)).isInstanceOf(WeekDayDiscountEvent.class);
             assertThat(discountEvents.get(1)).isInstanceOf(StarDiscountEvent.class);
