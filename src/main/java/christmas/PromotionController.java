@@ -1,5 +1,6 @@
 package christmas;
 
+import christmas.domain.Badge;
 import christmas.domain.Day;
 import christmas.domain.OrderSheet;
 import christmas.domain.Price;
@@ -72,5 +73,7 @@ public class PromotionController {
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentationResult);
         outputView.printTotalDiscountPrice(totalEventResult.getDiscountPrice());
         outputView.printDiscountedTotalPrice(totalEventResult.getDiscountedTotalPrice(orderSheet.getTotalPrice()));
+        Badge badge = totalEventResult.getBadge();
+        outputView.printBadge(badge);
     }
 }

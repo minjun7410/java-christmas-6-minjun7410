@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.domain.Badge;
 import christmas.domain.Menu;
 import christmas.domain.Price;
 import christmas.domain.event.discount.DiscountEvent;
@@ -24,6 +25,7 @@ public class OutputView {
     private static final String TOTAL_DISCOUNT_MESSAGE = "%s원\n";
     private static final String DISCOUNTED_PRICE_TOP_MESSAGE = "<할인 후 예상 결제 금액>\n";
     private static final String DISCOUNTED_PRICE_MESSAGE = "%s원\n";
+    private static final String BADGE_TOP_MESSAGE = "<12월 이벤트 배지>\n";
     private static final String NOTHING = "없음\n";
 
     public void printStart() {
@@ -81,6 +83,11 @@ public class OutputView {
         System.out.print(DISCOUNTED_PRICE_TOP_MESSAGE);
         System.out.printf(DISCOUNTED_PRICE_MESSAGE, price);
         System.out.println();
+    }
+
+    public void printBadge(Badge badge) {
+        System.out.print(BADGE_TOP_MESSAGE);
+        System.out.println(badge);
     }
 
     private boolean hasNothing(int size) {
