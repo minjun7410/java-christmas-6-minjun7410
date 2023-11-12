@@ -4,6 +4,7 @@ import christmas.domain.Day;
 import christmas.domain.Menu;
 import christmas.domain.OrderSheet;
 import christmas.domain.Price;
+import christmas.domain.event.TotalEventResult;
 import christmas.domain.event.discount.DiscountEventManager;
 import christmas.domain.event.discount.DiscountResult;
 import christmas.domain.event.presentation.PresentationEventManager;
@@ -32,9 +33,9 @@ public class TotalEventResultTest {
 
     @Test
     void 총_혜택금액_계산_기능_테스트() {
-        TotalEventResult totalEventResult = new TotalEventResultTest(discountResult, presentationResult);
+        TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentationResult);
         Price price = totalEventResult.getDiscountPrice();
         Price priceAnswer = new Price(presentationResult.getTotalPresentationPrice() + discountResult.getTotalDiscountAmount());
-        assertThat(price.toString()).isEqualTo(priceAnswer);
+        assertThat(price.toString()).isEqualTo(priceAnswer.toString());
     }
 }
