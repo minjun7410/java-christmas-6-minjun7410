@@ -3,21 +3,22 @@ package christmas.domain.event.presentation;
 import christmas.domain.Menu;
 
 import java.util.List;
+import java.util.Map;
 
 public class PresentationResult {
-    private final List<Menu> presentations;
+    private final Map<Menu, Integer> presentations;
 
-    public PresentationResult(List<Menu> presentations) {
+    public PresentationResult(Map<Menu, Integer> presentations) {
         this.presentations = presentations;
     }
 
-    public List<Menu> getPresentations() {
+    public Map<Menu, Integer> getPresentations() {
         return presentations;
     }
 
     public int getTotalPresentationPrice() {
-        return presentations.stream()
-                .map(Menu::getPrice)
+        return presentations.keySet().stream()
+                .map(menu -> menu.getPrice() * presentations.get(menu))
                 .reduce(0, Integer::sum);
     }
 }

@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -22,7 +21,7 @@ public class PresentationResultTest {
         menuCounts.put("바비큐립", 5);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        List<Menu> presentations = PresentationEventManager.getPresentations(orderSheet).getPresentations();
+        Map<Menu, Integer> presentations = PresentationEventManager.getPresentationResult(orderSheet).getPresentations();
         presentationResult = new PresentationResult(presentations);
     }
 
@@ -33,6 +32,6 @@ public class PresentationResultTest {
 
     @Test
     void 총_증정품_종류_테스트() {
-        assertThat(presentationResult.getPresentations().get(0)).isEqualTo(Menu.CHAMPAGNE);
+        assertThat(presentationResult.getPresentations().get(Menu.CHAMPAGNE)).isEqualTo(1);
     }
 }
