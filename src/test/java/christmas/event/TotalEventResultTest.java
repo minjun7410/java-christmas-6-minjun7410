@@ -38,4 +38,12 @@ public class TotalEventResultTest {
         Price priceAnswer = new Price(presentationResult.getTotalPresentationPrice() + discountResult.getTotalDiscountAmount());
         assertThat(price.toString()).isEqualTo(priceAnswer.toString());
     }
+
+    @Test
+    void 예상_결제_금액_계산_테스트() {
+        TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentationResult);
+        Price price = totalEventResult.getDiscountedTotalPrice(new Price(100000));
+        Price correctPrice = new Price(100000 - discountResult.getTotalDiscountAmount());
+        assertThat(price.toString()).isEqualTo(correctPrice.toString());
+    }
 }
