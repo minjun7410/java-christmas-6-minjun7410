@@ -5,7 +5,6 @@ import java.util.*;
 public class OrderSheet {
     private static final String EXCEED_MENU_COUNT_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private static final String ONLY_DRINK_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
-    private static final String TOO_LITTLE_PRICE_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
 
     private Map<Menu, Integer> orderSheet;
     private int totalPrice;
@@ -30,7 +29,6 @@ public class OrderSheet {
         this.totalPrice = orderSheet.keySet().stream()
                 .map(menu -> menu.getPrice() * orderSheet.get(menu))
                 .reduce(0, Integer::sum);
-        validateTotalPrice();
         return totalPrice;
     }
 
@@ -65,10 +63,5 @@ public class OrderSheet {
                 .filter(menu -> menu.compareType(MenuType.DRINK))
                 .count();
         if (drinkCount == orderSheet.size()) throw new IllegalArgumentException(ONLY_DRINK_TEXT);
-    }
-
-    private void validateTotalPrice() {
-        if (totalPrice >= 10000) return;
-        throw new IllegalArgumentException(TOO_LITTLE_PRICE_TEXT);
     }
 }
