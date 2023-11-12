@@ -17,4 +17,9 @@ public class TotalEventResult {
         int totalPriceAmount = discountResult.getTotalDiscountAmount() + presentationResult.getTotalPresentationPrice();
         return new Price(totalPriceAmount);
     }
+
+    public Price getDiscountedTotalPrice(Price price) {
+        price.discount(discountResult.getTotalDiscountAmount());
+        return price;
+    }
 }
