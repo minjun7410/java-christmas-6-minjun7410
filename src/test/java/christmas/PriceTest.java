@@ -1,12 +1,13 @@
-package christmas.event;
+package christmas;
 
+import christmas.domain.Price;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class PriceTest {
     @Test
-    void 쉼표로_끊는_기느() {
+    void 쉼표로_끊는_기능_테스트() {
         Price price = new Price(1000000);
         String priceText = price.toString();
         assertThat(getMatchCount(priceText, ",")).isEqualTo(2);
