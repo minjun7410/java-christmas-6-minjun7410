@@ -23,8 +23,8 @@ public class DiscountEventManagerTest {
 
         Map<DiscountEvent, Price> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
         assertThat(discountEventList).satisfies(discountEvents -> {
-            assertThat(discountEvents.get(0)).isInstanceOf(ChristmasDiscountEvent.class);
-            assertThat(discountEvents.get(1)).isInstanceOf(HolidayDiscountEvent.class);
+            assertThat(discountEvents.keySet()).extracting("class").hasSameClassAs(ChristmasDiscountEvent.class);
+            assertThat(discountEvents.keySet()).extracting("class").hasSameClassAs(HolidayDiscountEvent.class);
         });
     }
 
@@ -37,8 +37,8 @@ public class DiscountEventManagerTest {
         OrderSheet orderSheet = new OrderSheet(orders);
         Map<DiscountEvent, Price> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
         assertThat(discountEventList).satisfies(discountEvents -> {
-            assertThat(discountEvents.get(0)).isInstanceOf(WeekDayDiscountEvent.class);
-            assertThat(discountEvents.get(1)).isInstanceOf(StarDiscountEvent.class);
+            assertThat(discountEvents.keySet()).extracting("class").hasSameClassAs(WeekDayDiscountEvent.class);
+            assertThat(discountEvents.keySet()).extracting("class").hasSameClassAs(StarDiscountEvent.class);
         });
     }
 }
