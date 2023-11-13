@@ -1,13 +1,12 @@
 package christmas.event.discount;
 
-import christmas.domain.Day;
-import christmas.domain.OrderSheet;
+import christmas.domain.day.Day;
+import christmas.domain.order.OrderSheet;
 import christmas.domain.Price;
 import christmas.domain.event.discount.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

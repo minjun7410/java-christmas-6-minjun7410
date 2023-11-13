@@ -1,8 +1,7 @@
 package christmas.event;
 
-import christmas.domain.Day;
-import christmas.domain.Menu;
-import christmas.domain.OrderSheet;
+import christmas.domain.day.Day;
+import christmas.domain.order.OrderSheet;
 import christmas.domain.Price;
 import christmas.domain.event.TotalEventResult;
 import christmas.domain.event.discount.DiscountEventManager;

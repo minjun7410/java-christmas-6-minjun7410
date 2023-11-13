@@ -1,6 +1,6 @@
 package christmas.domain.event.discount;
 
-import christmas.domain.Day;
+import christmas.domain.day.Day;
 
 public class ChristmasDiscountEvent implements DiscountEvent {
     private static final int START_DAY = 1;

@@ -1,7 +1,7 @@
 package christmas;
 
-import christmas.domain.Menu;
-import christmas.domain.MenuType;
+import christmas.domain.order.Menu;
+import christmas.domain.order.MenuType;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

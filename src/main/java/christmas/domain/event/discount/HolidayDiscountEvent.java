@@ -1,8 +1,8 @@
 package christmas.domain.event.discount;
 
-import christmas.domain.Day;
-import christmas.domain.MenuType;
-import christmas.domain.OrderSheet;
+import christmas.domain.day.Day;
+import christmas.domain.order.MenuType;
+import christmas.domain.order.OrderSheet;
 
 public class HolidayDiscountEvent implements DiscountEvent {
     private static final int UNIT_AMOUNT = 2023;

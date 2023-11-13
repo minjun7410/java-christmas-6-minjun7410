@@ -1,7 +1,7 @@
 package christmas.event.presentation;
 
-import christmas.domain.Menu;
-import christmas.domain.OrderSheet;
+import christmas.domain.order.Menu;
+import christmas.domain.order.OrderSheet;
 import christmas.domain.event.presentation.PresentationEventManager;
 import org.junit.jupiter.api.Test;
 

@@ -1,8 +1,7 @@
 package christmas.domain.event.presentation;
 
-import christmas.domain.Menu;
+import christmas.domain.order.Menu;
 
-import java.util.List;
 import java.util.Map;
 
 public class PresentationResult {

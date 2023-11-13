@@ -1,13 +1,11 @@
 package christmas.domain.event.discount;
 
-import christmas.domain.Day;
-import christmas.domain.OrderSheet;
-import org.mockito.internal.matchers.Or;
+import christmas.domain.day.Day;
+import christmas.domain.order.OrderSheet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.BiFunction;
 
 public enum DiscountEventManager {
     CHRISTMAS {

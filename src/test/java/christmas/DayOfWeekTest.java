@@ -1,6 +1,6 @@
 package christmas;
 
-import christmas.domain.DayOfWeek;
+import christmas.domain.day.DayOfWeek;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 

@@ -1,8 +1,8 @@
-package christmas;
+package christmas.controller;
 
 import christmas.domain.Badge;
-import christmas.domain.Day;
-import christmas.domain.OrderSheet;
+import christmas.domain.day.Day;
+import christmas.domain.order.OrderSheet;
 import christmas.domain.Price;
 import christmas.domain.event.TotalEventResult;
 import christmas.domain.event.discount.DiscountEventManager;
@@ -70,6 +70,7 @@ public class PromotionController {
         PresentationResult presentationResult = PresentationEventManager.getPresentationResult(orderSheet);
         outputView.printPresentations(presentationResult.getPresentations());
         outputView.printEvents(discountResult.getDiscountEvents(), new Price(presentationResult.getTotalPresentationPrice()));
+
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentationResult);
         outputView.printTotalDiscountPrice(totalEventResult.getDiscountPrice());
         outputView.printDiscountedTotalPrice(totalEventResult.getDiscountedTotalPrice(orderSheet.getTotalPrice()));

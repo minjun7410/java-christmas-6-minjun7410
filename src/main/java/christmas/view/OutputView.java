@@ -1,12 +1,10 @@
 package christmas.view;
 
 import christmas.domain.Badge;
-import christmas.domain.Menu;
+import christmas.domain.order.Menu;
 import christmas.domain.Price;
 import christmas.domain.event.discount.DiscountEvent;
 
-import java.sql.SQLOutput;
-import java.util.Collections;
 import java.util.Map;
 
 public class OutputView {

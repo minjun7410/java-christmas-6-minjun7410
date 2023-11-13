@@ -1,6 +1,6 @@
 package christmas.event.presentation;
 
-import christmas.domain.OrderSheet;
+import christmas.domain.order.OrderSheet;
 import christmas.domain.event.presentation.ChampagnePresentationEvent;
 import org.junit.jupiter.api.Test;
 

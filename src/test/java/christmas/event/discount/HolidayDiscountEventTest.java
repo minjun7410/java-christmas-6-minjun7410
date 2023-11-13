@@ -1,8 +1,8 @@
 package christmas.event.discount;
 
-import christmas.domain.Day;
+import christmas.domain.day.Day;
 import christmas.domain.event.discount.HolidayDiscountEvent;
-import christmas.domain.OrderSheet;
+import christmas.domain.order.OrderSheet;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

@@ -1,7 +1,7 @@
 package christmas.domain.event.presentation;
 
-import christmas.domain.Menu;
-import christmas.domain.OrderSheet;
+import christmas.domain.order.Menu;
+import christmas.domain.order.OrderSheet;
 
 public class ChampagnePresentationEvent implements PresentationEvent {
     private static final int BASE_AMOUNT = 120000;

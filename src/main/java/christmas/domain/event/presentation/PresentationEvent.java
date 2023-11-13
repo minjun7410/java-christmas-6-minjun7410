@@ -1,6 +1,6 @@
 package christmas.domain.event.presentation;
 
-import christmas.domain.Menu;
+import christmas.domain.order.Menu;
 
 public interface PresentationEvent {
     public boolean isPresentable();
