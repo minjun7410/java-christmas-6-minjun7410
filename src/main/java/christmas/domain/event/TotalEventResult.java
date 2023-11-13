@@ -8,16 +8,14 @@ import christmas.domain.event.present.PresentResult;
 public class TotalEventResult {
     private final DiscountResult discountResult;
     private final PresentResult presentResult;
-    private int totalDiscountAmount;
 
     public TotalEventResult(DiscountResult discountResult, PresentResult presentResult) {
         this.discountResult = discountResult;
         this.presentResult = presentResult;
-        calculateTotalPriceAmount();
     }
 
     public Price getDiscountPrice() {
-        return new Price(totalDiscountAmount);
+        return new Price(calculateTotalPriceAmount());
     }
 
     public Price getDiscountedTotalPrice(Price price) {
@@ -26,10 +24,11 @@ public class TotalEventResult {
     }
 
     public Badge getBadge() {
-        return Badge.getBadgeByDiscountedAmount(totalDiscountAmount);
+        return Badge.getBadgeByDiscountedAmount(
+                calculateTotalPriceAmount());
     }
 
-    private void calculateTotalPriceAmount() {
-        totalDiscountAmount = discountResult.getTotalDiscountAmount() + presentResult.getTotalPresentPrice();
+    private int calculateTotalPriceAmount() {
+        return discountResult.getTotalDiscountAmount() + presentResult.getTotalPresentPrice();
     }
 }
