@@ -11,22 +11,26 @@ import java.util.function.BiFunction;
 
 public enum DiscountEventManager {
     CHRISTMAS {
-        public DiscountEvent create(Day day, OrderSheet orderSheet) {
+        @Override
+        protected DiscountEvent create(Day day, OrderSheet orderSheet) {
             return new ChristmasDiscountEvent(day);
         }
     },
     HOLIDAY {
-        public DiscountEvent create(Day day, OrderSheet orderSheet) {
+        @Override
+        protected DiscountEvent create(Day day, OrderSheet orderSheet) {
             return new HolidayDiscountEvent(day, orderSheet);
         }
     },
     WEEKDAY {
-        public DiscountEvent create(Day day, OrderSheet orderSheet) {
+        @Override
+        protected DiscountEvent create(Day day, OrderSheet orderSheet) {
             return new WeekDayDiscountEvent(day, orderSheet);
         }
     },
     STAR{
-        public DiscountEvent create(Day day, OrderSheet orderSheet) {
+        @Override
+        protected DiscountEvent create(Day day, OrderSheet orderSheet) {
             return new StarDiscountEvent(day);
         }
     };
