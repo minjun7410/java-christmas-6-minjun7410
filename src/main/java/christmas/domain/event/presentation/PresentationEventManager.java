@@ -8,18 +8,19 @@ import java.util.Map;
 import java.util.function.Function;
 
 public enum PresentationEventManager {
-    CHAMPAGNE((orderSheet) -> new ChampagnePresentationEvent(orderSheet));
+    CHAMPAGNE {
+        @Override
+        protected PresentationEvent create(OrderSheet orderSheet) {
+            return new ChampagnePresentationEvent(orderSheet);
+        }
+    };
 
-    private Function<OrderSheet, PresentationEvent> createFunction;
-
-    PresentationEventManager(Function<OrderSheet, PresentationEvent> createFunction) {
-        this.createFunction = createFunction;
-    }
+    abstract protected PresentationEvent create(OrderSheet orderSheet);
 
     public static PresentationResult getPresentationResult(OrderSheet orderSheet) {
         Map<Menu, Integer> presentations = new HashMap<>();
         for (PresentationEventManager value : values()) {
-            PresentationEvent event = value.createFunction.apply(orderSheet);
+            PresentationEvent event = value.create(orderSheet);
             if (event.isPresentable()) {
                 int presentationCount = presentations.getOrDefault(event.getPresentation(), 1);
                 presentations.put(event.getPresentation(), presentationCount);
