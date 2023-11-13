@@ -2,6 +2,7 @@ package christmas.domain.event.discount;
 
 import christmas.domain.Day;
 import christmas.domain.OrderSheet;
+import org.mockito.internal.matchers.Or;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,21 +10,33 @@ import java.util.List;
 import java.util.function.BiFunction;
 
 public enum DiscountEventManager {
-    CHRISTMAS((day, orderSheet) -> new ChristmasDiscountEvent(day)),
-    HOLIDAY((day, orderSheet) -> new HolidayDiscountEvent(day, orderSheet)),
-    WEEKDAY((day, orderSheet) -> new WeekDayDiscountEvent(day, orderSheet)),
-    STAR(((day, orderSheet) -> new StarDiscountEvent(day)));
+    CHRISTMAS {
+        public DiscountEvent create(Day day, OrderSheet orderSheet) {
+            return new ChristmasDiscountEvent(day);
+        }
+    },
+    HOLIDAY {
+        public DiscountEvent create(Day day, OrderSheet orderSheet) {
+            return new HolidayDiscountEvent(day, orderSheet);
+        }
+    },
+    WEEKDAY {
+        public DiscountEvent create(Day day, OrderSheet orderSheet) {
+            return new WeekDayDiscountEvent(day, orderSheet);
+        }
+    },
+    STAR{
+        public DiscountEvent create(Day day, OrderSheet orderSheet) {
+            return new StarDiscountEvent(day);
+        }
+    };
 
-    private BiFunction<Day, OrderSheet, DiscountEvent> createFunction;
-
-    private DiscountEventManager(BiFunction<Day, OrderSheet, DiscountEvent> createFunction) {
-        this.createFunction = createFunction;
-    }
+    abstract protected DiscountEvent create(Day day, OrderSheet orderSheet);
 
     public static DiscountResult getDiscountResult(Day day, OrderSheet orderSheet) {
         if (orderSheet.isMoreThanTotal(10000)) {
             List<DiscountEvent> discountEvents = Arrays.stream(values())
-                    .map(event -> event.createFunction.apply(day, orderSheet))
+                    .map(event -> event.create(day, orderSheet))
                     .filter(DiscountEvent::isDiscountable)
                     .toList();
             return new DiscountResult(discountEvents);
