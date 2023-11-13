@@ -6,8 +6,8 @@ import christmas.domain.Price;
 import christmas.domain.event.TotalEventResult;
 import christmas.domain.event.discount.DiscountEventManager;
 import christmas.domain.event.discount.DiscountResult;
-import christmas.domain.event.presentation.PresentationEventManager;
-import christmas.domain.event.presentation.PresentationResult;
+import christmas.domain.event.present.PresentEventManager;
+import christmas.domain.event.present.PresentResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ import java.util.Map;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class TotalEventResultTest {
-    private PresentationResult presentationResult;
+    private PresentResult presentResult;
     private DiscountResult discountResult;
     @BeforeEach
     void beforeEach() {
@@ -26,21 +26,21 @@ public class TotalEventResultTest {
         menuCounts.put("바비큐립", 5);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        presentationResult = PresentationEventManager.getPresentationResult(orderSheet);
+        presentResult = PresentEventManager.getPresentResult(orderSheet);
         discountResult = DiscountEventManager.getDiscountResult(day,orderSheet);
     }
 
     @Test
     void 총_혜택금액_계산_기능_테스트() {
-        TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentationResult);
+        TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);
         Price price = totalEventResult.getDiscountPrice();
-        Price priceAnswer = new Price(presentationResult.getTotalPresentationPrice() + discountResult.getTotalDiscountAmount());
+        Price priceAnswer = new Price(presentResult.getTotalPresentPrice() + discountResult.getTotalDiscountAmount());
         assertThat(price.toString()).isEqualTo(priceAnswer.toString());
     }
 
     @Test
     void 예상_결제_금액_계산_테스트() {
-        TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentationResult);
+        TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);
         Price price = totalEventResult.getDiscountedTotalPrice(new Price(100000));
         Price correctPrice = new Price(100000 - discountResult.getTotalDiscountAmount());
         assertThat(price.toString()).isEqualTo(correctPrice.toString());

@@ -1,9 +1,9 @@
-package christmas.event.presentation;
+package christmas.event.present;
 
 import christmas.domain.order.Menu;
 import christmas.domain.order.OrderSheet;
-import christmas.domain.event.presentation.PresentationEventManager;
-import christmas.domain.event.presentation.PresentationResult;
+import christmas.domain.event.present.PresentEventManager;
+import christmas.domain.event.present.PresentResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,8 +12,8 @@ import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class PresentationResultTest {
-    PresentationResult presentationResult;
+public class PresentResultTest {
+    PresentResult presentResult;
 
     @BeforeEach
     void beforEach() {
@@ -21,17 +21,17 @@ public class PresentationResultTest {
         menuCounts.put("바비큐립", 5);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        Map<Menu, Integer> presentations = PresentationEventManager.getPresentationResult(orderSheet).getPresentations();
-        presentationResult = new PresentationResult(presentations);
+        Map<Menu, Integer> presents = PresentEventManager.getPresentResult(orderSheet).getPresents();
+        presentResult = new PresentResult(presents);
     }
 
     @Test
     void 총_증정품_금액_테스트() {
-        assertThat(presentationResult.getTotalPresentationPrice()).isEqualTo(Menu.CHAMPAGNE.getPrice());
+        assertThat(presentResult.getTotalPresentPrice()).isEqualTo(Menu.CHAMPAGNE.getPrice());
     }
 
     @Test
     void 총_증정품_종류_테스트() {
-        assertThat(presentationResult.getPresentations().get(Menu.CHAMPAGNE)).isEqualTo(1);
+        assertThat(presentResult.getPresents().get(Menu.CHAMPAGNE)).isEqualTo(1);
     }
 }

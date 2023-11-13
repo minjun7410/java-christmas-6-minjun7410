@@ -7,8 +7,8 @@ import christmas.domain.Price;
 import christmas.domain.event.TotalEventResult;
 import christmas.domain.event.discount.DiscountEventManager;
 import christmas.domain.event.discount.DiscountResult;
-import christmas.domain.event.presentation.PresentationEventManager;
-import christmas.domain.event.presentation.PresentationResult;
+import christmas.domain.event.present.PresentEventManager;
+import christmas.domain.event.present.PresentResult;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -67,11 +67,11 @@ public class PromotionController {
 
     private void printAfterEvent(Day orderDay, OrderSheet orderSheet) {
         DiscountResult discountResult = DiscountEventManager.getDiscountResult(orderDay, orderSheet);
-        PresentationResult presentationResult = PresentationEventManager.getPresentationResult(orderSheet);
-        outputView.printPresentations(presentationResult.getPresentations());
-        outputView.printEvents(discountResult.getDiscountEvents(), new Price(presentationResult.getTotalPresentationPrice()));
+        PresentResult presentResult = PresentEventManager.getPresentResult(orderSheet);
+        outputView.printPresents(presentResult.getPresents());
+        outputView.printEvents(discountResult.getDiscountEvents(), new Price(presentResult.getTotalPresentPrice()));
 
-        TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentationResult);
+        TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);
         outputView.printTotalDiscountPrice(totalEventResult.getDiscountPrice());
         outputView.printDiscountedTotalPrice(totalEventResult.getDiscountedTotalPrice(orderSheet.getTotalPrice()));
         Badge badge = totalEventResult.getBadge();

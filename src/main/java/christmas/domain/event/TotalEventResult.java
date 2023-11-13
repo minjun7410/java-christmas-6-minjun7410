@@ -3,16 +3,16 @@ package christmas.domain.event;
 import christmas.domain.Badge;
 import christmas.domain.Price;
 import christmas.domain.event.discount.DiscountResult;
-import christmas.domain.event.presentation.PresentationResult;
+import christmas.domain.event.present.PresentResult;
 
 public class TotalEventResult {
     private final DiscountResult discountResult;
-    private final PresentationResult presentationResult;
+    private final PresentResult presentResult;
     private int totalDiscountAmount;
 
-    public TotalEventResult(DiscountResult discountResult, PresentationResult presentationResult) {
+    public TotalEventResult(DiscountResult discountResult, PresentResult presentResult) {
         this.discountResult = discountResult;
-        this.presentationResult = presentationResult;
+        this.presentResult = presentResult;
         calculateTotalPriceAmount();
     }
 
@@ -30,6 +30,6 @@ public class TotalEventResult {
     }
 
     private void calculateTotalPriceAmount() {
-        totalDiscountAmount = discountResult.getTotalDiscountAmount() + presentationResult.getTotalPresentationPrice();
+        totalDiscountAmount = discountResult.getTotalDiscountAmount() + presentResult.getTotalPresentPrice();
     }
 }

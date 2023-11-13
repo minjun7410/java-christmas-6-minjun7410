@@ -1,7 +1,7 @@
-package christmas.event.presentation;
+package christmas.event.present;
 
 import christmas.domain.order.OrderSheet;
-import christmas.domain.event.presentation.ChampagnePresentationEvent;
+import christmas.domain.event.present.ChampagnePresentEvent;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -9,15 +9,15 @@ import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class ChampagnePresentationDiscountEventTest {
+public class ChampagnePresentDiscountEventTest {
     @Test
     void 총_주문금액_12만원_이상_테스트() {
         Map<String, Integer> menuCounts = new HashMap<>();
         menuCounts.put("바비큐립", 3);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        ChampagnePresentationEvent champagnePresentationEvent = new ChampagnePresentationEvent(orderSheet);
-        assertThat(champagnePresentationEvent.isPresentable()).isTrue();
+        ChampagnePresentEvent champagnePresentEvent = new ChampagnePresentEvent(orderSheet);
+        assertThat(champagnePresentEvent.isPresentable()).isTrue();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class ChampagnePresentationDiscountEventTest {
         menuCounts.put("바비큐립", 1);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        ChampagnePresentationEvent champagnePresentationEvent = new ChampagnePresentationEvent(orderSheet);
-        assertThat(champagnePresentationEvent.isPresentable()).isFalse();
+        ChampagnePresentEvent champagnePresentEvent = new ChampagnePresentEvent(orderSheet);
+        assertThat(champagnePresentEvent.isPresentable()).isFalse();
     }
 }

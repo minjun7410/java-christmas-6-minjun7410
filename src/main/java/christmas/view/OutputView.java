@@ -15,8 +15,8 @@ public class OutputView {
     private static final String ORDER_SHEET_MESSAGE = "%s %d개\n";
     private static final String TOTAL_BEFORE_DISCOUNT_TOP_MESSAGE = "<할인 전 총주문 금액>\n";
     private static final String TOTAL_BEFORE_DISCOUNT_MESSAGE = "%s원\n";
-    private static final String PRESENTATION_TOP_MESSAGE = "<증정 메뉴>\n";
-    private static final String PRESENTATION_MESSAGE = "%s %d개\n";
+    private static final String PRESENT_TOP_MESSAGE = "<증정 메뉴>\n";
+    private static final String PRESENT_MESSAGE = "%s %d개\n";
     private static final String EVENTS_TOP_MESSAGE = "<혜택 내역>\n";
     private static final String EVENT_MESSAGE = "%s: -%s원\n";
     private static final String TOTAL_DISCOUNT_TOP_MESSAGE = "<총혜택 금액>\n";
@@ -52,11 +52,11 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printPresentations(Map<Menu, Integer> presentations) {
-        System.out.print(PRESENTATION_TOP_MESSAGE);
-        if (hasNothing(presentations.size())) return;
-        for (Menu menu : presentations.keySet()) {
-            System.out.printf(PRESENTATION_MESSAGE, menu.getName(), presentations.get(menu));
+    public void printPresents(Map<Menu, Integer> presents) {
+        System.out.print(PRESENT_TOP_MESSAGE);
+        if (hasNothing(presents.size())) return;
+        for (Menu menu : presents.keySet()) {
+            System.out.printf(PRESENT_MESSAGE, menu.getName(), presents.get(menu));
         }
         System.out.println();
     }

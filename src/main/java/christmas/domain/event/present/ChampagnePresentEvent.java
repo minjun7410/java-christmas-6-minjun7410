@@ -1,14 +1,14 @@
-package christmas.domain.event.presentation;
+package christmas.domain.event.present;
 
 import christmas.domain.order.Menu;
 import christmas.domain.order.OrderSheet;
 
-public class ChampagnePresentationEvent implements PresentationEvent {
+public class ChampagnePresentEvent implements PresentEvent {
     private static final int BASE_AMOUNT = 120000;
 
     private final OrderSheet orderSheet;
 
-    public ChampagnePresentationEvent(OrderSheet orderSheet) {
+    public ChampagnePresentEvent(OrderSheet orderSheet) {
         this.orderSheet = orderSheet;
     }
 
@@ -18,7 +18,7 @@ public class ChampagnePresentationEvent implements PresentationEvent {
     }
 
     @Override
-    public Menu getPresentation() {
+    public Menu getPresent() {
         return Menu.CHAMPAGNE;
     }
 }
