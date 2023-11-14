@@ -77,7 +77,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printDiscountedTotalPrice(Price price) {
+    public void printTotalDiscountedPrice(Price price) {
         System.out.print(DISCOUNTED_PRICE_TOP_MESSAGE);
         System.out.printf(DISCOUNTED_PRICE_MESSAGE, price);
         System.out.println();

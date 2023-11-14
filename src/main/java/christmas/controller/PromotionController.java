@@ -79,7 +79,7 @@ public class PromotionController {
 
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);
         outputView.printTotalDiscountPrice(totalEventResult.getDiscountPrice());
-        outputView.printDiscountedTotalPrice(totalEventResult.getDiscountedTotalPrice(orderSheet.getTotalPrice()));
+        outputView.printTotalDiscountedPrice(totalEventResult.getDiscountedPrice(orderSheet.getTotalPrice()));
         Badge badge = totalEventResult.getBadge();
         outputView.printBadge(badge);
     }

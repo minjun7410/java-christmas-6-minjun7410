@@ -18,7 +18,7 @@ public class TotalEventResult {
         return new Price(calculateTotalPriceAmount());
     }
 
-    public Price getDiscountedTotalPrice(Price price) {
+    public Price getDiscountedPrice(Price price) {
         price.discount(discountResult.getTotalDiscountAmount());
         return price;
     }
