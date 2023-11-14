@@ -3,8 +3,7 @@ package christmas.view;
 import christmas.domain.Badge;
 import christmas.domain.order.Menu;
 import christmas.domain.Price;
-import christmas.domain.event.discount.DiscountEvent;
-import christmas.dto.DiscountEventDTO;
+import christmas.dto.DiscountResultDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -63,10 +62,10 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printEvents(List<DiscountEventDTO> discountEvents, Price presentationsPrice) {
+    public void printEvents(List<DiscountResultDTO> discountEvents, Price presentationsPrice) {
         System.out.print(EVENTS_TOP_MESSAGE);
         if (hasNothing(discountEvents.size())) return;
-        for (DiscountEventDTO event : discountEvents) {
+        for (DiscountResultDTO event : discountEvents) {
             System.out.printf(EVENT_MESSAGE, event.getEventName(), event.getPrice());
         }
         System.out.printf(EVENT_MESSAGE, "증정 이벤트", presentationsPrice);

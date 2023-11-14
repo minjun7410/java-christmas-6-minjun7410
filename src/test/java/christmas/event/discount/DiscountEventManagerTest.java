@@ -2,9 +2,8 @@ package christmas.event.discount;
 
 import christmas.domain.day.Day;
 import christmas.domain.order.OrderSheet;
-import christmas.domain.Price;
 import christmas.domain.event.discount.*;
-import christmas.dto.DiscountEventDTO;
+import christmas.dto.DiscountResultDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,7 +29,7 @@ public class DiscountEventManagerTest {
     void 할인_적용_가능_이벤트_테스트_크리스마스_주말() {
         Day day = new Day(1);
 
-        List<DiscountEventDTO> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
+        List<DiscountResultDTO> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountResults();
         assertThat(discountEventList).satisfies(discountEvents -> {
             assertThat(discountEvents.get(0).getEventName()).isEqualTo("크리스마스 디데이 할인");
             assertThat(discountEvents.get(1).getEventName()).isEqualTo("주말 할인");
@@ -42,7 +41,7 @@ public class DiscountEventManagerTest {
     void 할인_적용_가능_이벤트_평일_별() {
         Day day = new Day(31);
 
-        List<DiscountEventDTO> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
+        List<DiscountResultDTO> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountResults();
         assertThat(discountEventList).satisfies(discountEvents -> {
             assertThat(discountEvents.get(0).getEventName()).isEqualTo("평일 할인");
             assertThat(discountEvents.get(1).getEventName()).isEqualTo("특별 할인");

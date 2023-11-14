@@ -1,12 +1,9 @@
 package christmas.domain.event.discount;
 
-import christmas.domain.Price;
-import christmas.dto.DiscountEventDTO;
+import christmas.dto.DiscountResultDTO;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DiscountResult {
     private final List<DiscountEvent> discountEvents;
@@ -15,12 +12,12 @@ public class DiscountResult {
         this.discountEvents = discountEvents;
     }
 
-    public List<DiscountEventDTO> getDiscountEvents() {
-        List<DiscountEventDTO> discountEventDTOs = new ArrayList<>();
+    public List<DiscountResultDTO> getDiscountResults() {
+        List<DiscountResultDTO> discountResultDTOS = new ArrayList<>();
         for (DiscountEvent event : discountEvents) {
-            discountEventDTOs.add(new DiscountEventDTO(event.toString(), event.getDiscountedAmount()));
+            discountResultDTOS.add(new DiscountResultDTO(event.toString(), event.getDiscountedAmount()));
         }
-        return discountEventDTOs;
+        return discountResultDTOS;
     }
     
     public int getTotalDiscountAmount() {

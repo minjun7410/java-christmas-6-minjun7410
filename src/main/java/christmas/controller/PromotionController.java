@@ -75,7 +75,7 @@ public class PromotionController {
         DiscountResult discountResult = DiscountEventManager.getDiscountResult(orderDay, orderSheet);
         PresentResult presentResult = PresentEventManager.getPresentResult(orderSheet);
         outputView.printPresents(presentResult.getPresents());
-        outputView.printEvents(discountResult.getDiscountEvents(), new Price(presentResult.getTotalPresentPrice()));
+        outputView.printEvents(discountResult.getDiscountResults(), new Price(presentResult.getTotalPresentPrice()));
 
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);
         outputView.printTotalDiscountPrice(totalEventResult.getDiscountPrice());
