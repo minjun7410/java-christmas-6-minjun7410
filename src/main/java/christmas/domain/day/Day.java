@@ -32,6 +32,6 @@ public class Day {
 
     private void validateDayRange() {
         if (DayConstants.START_OF_MONTH.getDay() <= day && day <= DayConstants.END_OF_MONTH.getDay()) return;
-        throw new IllegalArgumentException(ErrorMessage.INVALID_DAY.getErrorMessage());
+        throw new IllegalArgumentException(ErrorMessage.INVALID_DAY_RANGE.getErrorMessage());
     }
 }
