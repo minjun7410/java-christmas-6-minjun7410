@@ -6,6 +6,8 @@ import christmas.domain.Price;
 import java.util.*;
 
 public class OrderSheet {
+    private static final int TOTAL_COUNT_LIMIT = 20;
+
     private Map<Menu, Integer> orderSheet;
     private int totalPrice;
 
@@ -54,7 +56,7 @@ public class OrderSheet {
     private void validateExceedMenuCount(Map<String, Integer> menus) {
         int totalMenuCount = menus.values().stream()
                 .reduce(0, Integer::sum);
-        if (totalMenuCount <= 20) return;
+        if (totalMenuCount <= TOTAL_COUNT_LIMIT) return;
         throw new IllegalArgumentException(ErrorMessage.EXCEED_MENU_COUNT.getErrorMessage());
     }
 

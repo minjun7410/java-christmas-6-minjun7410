@@ -1,9 +1,9 @@
 package christmas.domain.event.discount;
 
+import christmas.constants.AmountConstants;
 import christmas.domain.day.Day;
 
 public class StarDiscountEvent implements DiscountEvent {
-    private static final int DISCOUNT_AMOUNT = 1_000;
     private final Day presentDay;
 
     public StarDiscountEvent(Day presentDay) {
@@ -17,7 +17,7 @@ public class StarDiscountEvent implements DiscountEvent {
 
     @Override
     public int getDiscountedAmount() {
-        return DISCOUNT_AMOUNT;
+        return AmountConstants.STAR_DISCOUNT.getAmount();
     }
 
     @Override

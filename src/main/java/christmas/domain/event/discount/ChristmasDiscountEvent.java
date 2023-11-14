@@ -1,12 +1,11 @@
 package christmas.domain.event.discount;
 
+import christmas.constants.AmountConstants;
 import christmas.domain.day.Day;
 
 public class ChristmasDiscountEvent implements DiscountEvent {
     private static final int START_DAY = 1;
     private static final int END_DAY = 25;
-    private static final int BASE_AMOUNT = 1_000;
-    private static final int UNIT_AMOUNT = 100;
 
     private final Day presentDay;
     private final Day startDay;
@@ -24,7 +23,7 @@ public class ChristmasDiscountEvent implements DiscountEvent {
     @Override
     public int getDiscountedAmount() {
         int dayDifference = presentDay.getDifference(startDay);
-        return BASE_AMOUNT + (UNIT_AMOUNT * dayDifference);
+        return AmountConstants.CHRISTMAS_BASE.getAmount() + (AmountConstants.CHRISTMAS_UNIT.getAmount() * dayDifference);
     }
 
     @Override

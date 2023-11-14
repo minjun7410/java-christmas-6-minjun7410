@@ -1,11 +1,10 @@
 package christmas.domain.event.present;
 
+import christmas.constants.AmountConstants;
 import christmas.domain.order.Menu;
 import christmas.domain.order.OrderSheet;
 
 public class ChampagnePresentEvent implements PresentEvent {
-    private static final int BASE_AMOUNT = 120_000;
-
     private final OrderSheet orderSheet;
 
     public ChampagnePresentEvent(OrderSheet orderSheet) {
@@ -14,7 +13,7 @@ public class ChampagnePresentEvent implements PresentEvent {
 
     @Override
     public boolean isPresentable() {
-        return (orderSheet.isMoreThanTotal(BASE_AMOUNT));
+        return (orderSheet.isMoreThanTotal(AmountConstants.CHAMPAGNE_PRESENT_BASE.getAmount()));
     }
 
     @Override

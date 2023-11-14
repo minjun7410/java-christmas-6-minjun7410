@@ -1,5 +1,6 @@
 package christmas.domain.event.discount;
 
+import christmas.constants.AmountConstants;
 import christmas.domain.day.Day;
 import christmas.domain.order.OrderSheet;
 
@@ -36,7 +37,7 @@ public enum DiscountEventManager {
     abstract protected DiscountEvent create(Day day, OrderSheet orderSheet);
 
     public static DiscountResult getDiscountResult(Day day, OrderSheet orderSheet) {
-        if (orderSheet.isMoreThanTotal(10000)) {
+        if (orderSheet.isMoreThanTotal(AmountConstants.DISCOUNT_THRESHOLD.getAmount())) {
             List<DiscountEvent> discountEvents = Arrays.stream(values())
                     .map(event -> event.create(day, orderSheet))
                     .filter(DiscountEvent::isDiscountable)
