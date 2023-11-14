@@ -1,13 +1,11 @@
 package christmas.domain.order;
 
+import christmas.constants.ErrorMessage;
 import christmas.domain.Price;
 
 import java.util.*;
 
 public class OrderSheet {
-    private static final String EXCEED_MENU_COUNT_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
-    private static final String ONLY_DRINK_TEXT = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
-
     private Map<Menu, Integer> orderSheet;
     private int totalPrice;
 
@@ -57,13 +55,13 @@ public class OrderSheet {
         int totalMenuCount = menus.values().stream()
                 .reduce(0, Integer::sum);
         if (totalMenuCount <= 20) return;
-        throw new IllegalArgumentException(EXCEED_MENU_COUNT_TEXT);
+        throw new IllegalArgumentException(ErrorMessage.EXCEED_MENU_COUNT.getErrorMessage());
     }
 
     private void validateOnlyDrink() {
         int drinkCount = (int) orderSheet.keySet().stream()
                 .filter(menu -> menu.compareType(MenuType.DRINK))
                 .count();
-        if (drinkCount == orderSheet.size()) throw new IllegalArgumentException(ONLY_DRINK_TEXT);
+        if (drinkCount == orderSheet.size()) throw new IllegalArgumentException(ErrorMessage.ONLY_DRINK.getErrorMessage());
     }
 }

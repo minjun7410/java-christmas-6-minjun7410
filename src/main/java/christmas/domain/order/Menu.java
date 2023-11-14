@@ -1,5 +1,7 @@
 package christmas.domain.order;
 
+import christmas.constants.ErrorMessage;
+
 public enum Menu {
     MUSHROOMSOUP("양송이수프", 6_000, MenuType.APPETIZER),
     TAPAS("타파스", 5_500, MenuType.APPETIZER),
@@ -40,6 +42,6 @@ public enum Menu {
         for (Menu menu : Menu.values()) {
             if (menu.name.equals(menuName)) return menu;
         }
-        throw new IllegalArgumentException("유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        throw new IllegalArgumentException(ErrorMessage.INVALID_MENU_NAME.getErrorMessage());
     }
 }
