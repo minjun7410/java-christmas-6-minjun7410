@@ -31,27 +31,33 @@ public class PromotionController {
     }
 
     private Day getOrderDay() {
-        while(true) {
+        boolean isInValidInput = true;
+        Day orderDay = null;
+        while(isInValidInput) {
             try {
                 int dayNumber = inputView.readDate();
-                Day orderDay = new Day(dayNumber);
-                return orderDay;
+                orderDay = new Day(dayNumber);
+                isInValidInput = false;
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
+        return orderDay;
     }
 
     private OrderSheet getOrderSheet() {
-        while(true) {
+        boolean isInValidInput = true;
+        OrderSheet orderSheet = null;
+        while(isInValidInput) {
             try {
                 Map<String, Integer> orderMenus = inputView.readMenu();
-                OrderSheet orderSheet = new OrderSheet(orderMenus);
-                return orderSheet;
+                orderSheet = new OrderSheet(orderMenus);
+                isInValidInput = false;
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
+        return orderSheet;
     }
 
     private void printPreview(Day orderDay, OrderSheet orderSheet) {
