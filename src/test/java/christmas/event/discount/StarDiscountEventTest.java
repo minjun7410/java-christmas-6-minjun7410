@@ -29,6 +29,6 @@ public class StarDiscountEventTest {
     void 할인_금액_계산_테스트() {
         Day day = new Day(25);
         StarDiscountEvent starEvent = new StarDiscountEvent(day);
-        assertThat(starEvent.getDiscountedAmount()).isEqualTo(1000);
+        assertThat(starEvent.getDiscountedAmount()).isEqualTo(1_000);
     }
 }

@@ -36,6 +36,6 @@ public class WeekDayDiscountEventTest {
         orderSheet.put("초코케이크", 1);
         orderSheet.put("아이스크림", 1);
         WeekDayDiscountEvent weekDayEvent = new WeekDayDiscountEvent(day, new OrderSheet(orderSheet));
-        assertThat(weekDayEvent.getDiscountedAmount()).isEqualTo(2023 * 2);
+        assertThat(weekDayEvent.getDiscountedAmount()).isEqualTo(2_023 * 2);
     }
 }

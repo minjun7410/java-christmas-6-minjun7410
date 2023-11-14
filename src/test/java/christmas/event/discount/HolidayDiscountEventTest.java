@@ -36,6 +36,6 @@ public class HolidayDiscountEventTest {
         orderSheet.put("바비큐립", 1);
         orderSheet.put("티본스테이크", 1);
         HolidayDiscountEvent holidayEvent = new HolidayDiscountEvent(day, new OrderSheet(orderSheet));
-        assertThat(holidayEvent.getDiscountedAmount()).isEqualTo(2023 * 2);
+        assertThat(holidayEvent.getDiscountedAmount()).isEqualTo(2_023 * 2);
     }
 }

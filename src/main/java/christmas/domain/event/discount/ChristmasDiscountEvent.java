@@ -5,7 +5,7 @@ import christmas.domain.day.Day;
 public class ChristmasDiscountEvent implements DiscountEvent {
     private static final int START_DAY = 1;
     private static final int END_DAY = 25;
-    private static final int BASE_AMOUNT = 1000;
+    private static final int BASE_AMOUNT = 1_000;
     private static final int UNIT_AMOUNT = 100;
 
     private final Day presentDay;

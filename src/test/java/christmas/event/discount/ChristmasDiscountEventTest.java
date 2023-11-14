@@ -14,7 +14,7 @@ public class ChristmasDiscountEventTest {
         Day day = new Day(21);
         ChristmasDiscountEvent christmasEvent = new ChristmasDiscountEvent(day);
         int discountedAmount = christmasEvent.getDiscountedAmount();
-        assertThat(discountedAmount).isEqualTo(1000 + 20 * 100);
+        assertThat(discountedAmount).isEqualTo(1_000 + 20 * 100);
     }
 
     @DisplayName("디데이 할인 적용 가능 테스트")

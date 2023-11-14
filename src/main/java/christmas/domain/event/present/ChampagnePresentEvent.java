@@ -4,7 +4,7 @@ import christmas.domain.order.Menu;
 import christmas.domain.order.OrderSheet;
 
 public class ChampagnePresentEvent implements PresentEvent {
-    private static final int BASE_AMOUNT = 120000;
+    private static final int BASE_AMOUNT = 120_000;
 
     private final OrderSheet orderSheet;
 

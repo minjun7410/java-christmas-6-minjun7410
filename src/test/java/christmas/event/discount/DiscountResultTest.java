@@ -27,6 +27,6 @@ public class DiscountResultTest {
         result.add(new ChristmasDiscountEvent(day));
         result.add(new HolidayDiscountEvent(day, orderSheet));
         DiscountResult discountResult = new DiscountResult(result);
-        assertThat(discountResult.getTotalDiscountAmount()).isEqualTo(1000 + 2023*2);
+        assertThat(discountResult.getTotalDiscountAmount()).isEqualTo(1_000 + 2_023*2);
     }
 }

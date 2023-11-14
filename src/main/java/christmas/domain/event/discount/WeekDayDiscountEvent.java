@@ -5,7 +5,7 @@ import christmas.domain.order.MenuType;
 import christmas.domain.order.OrderSheet;
 
 public class WeekDayDiscountEvent implements DiscountEvent {
-    private static final int UNIT_AMOUNT = 2023;
+    private static final int UNIT_AMOUNT = 2_023;
 
     private final Day presentDay;
     private final OrderSheet orderSheet;

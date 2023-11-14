@@ -3,7 +3,7 @@ package christmas.domain.event.discount;
 import christmas.domain.day.Day;
 
 public class StarDiscountEvent implements DiscountEvent {
-    private static final int DISCOUNT_AMOUNT = 1000;
+    private static final int DISCOUNT_AMOUNT = 1_000;
     private final Day presentDay;
 
     public StarDiscountEvent(Day presentDay) {

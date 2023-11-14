@@ -24,7 +24,7 @@ public class BadgeTest {
     @DisplayName("총 혜택금액이 20000원 이상일 때 배지가 산타인 지 테스트")
     @Test
     void 총_혜택_금액_테스트_산타() {
-        Badge badge = Badge.getBadgeByDiscountedAmount(21000);
+        Badge badge = Badge.getBadgeByDiscountedAmount(21_000);
         assertThat(badge).isEqualTo(Badge.SANTA);
     }
 
