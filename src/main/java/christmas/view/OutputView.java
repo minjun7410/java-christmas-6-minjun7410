@@ -4,7 +4,9 @@ import christmas.domain.Badge;
 import christmas.domain.order.Menu;
 import christmas.domain.Price;
 import christmas.domain.event.discount.DiscountEvent;
+import christmas.dto.DiscountEventDTO;
 
+import java.util.List;
 import java.util.Map;
 
 public class OutputView {
@@ -61,11 +63,11 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printEvents(Map<DiscountEvent, Price> discountEventResult, Price presentationsPrice) {
+    public void printEvents(List<DiscountEventDTO> discountEvents, Price presentationsPrice) {
         System.out.print(EVENTS_TOP_MESSAGE);
-        if (hasNothing(discountEventResult.size())) return;
-        for (DiscountEvent event : discountEventResult.keySet()) {
-            System.out.printf(EVENT_MESSAGE, event, discountEventResult.get(event));
+        if (hasNothing(discountEvents.size())) return;
+        for (DiscountEventDTO event : discountEvents) {
+            System.out.printf(EVENT_MESSAGE, event.getEventName(), event.getPrice());
         }
         System.out.printf(EVENT_MESSAGE, "증정 이벤트", presentationsPrice);
         System.out.println();

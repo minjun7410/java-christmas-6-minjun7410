@@ -4,11 +4,13 @@ import christmas.domain.day.Day;
 import christmas.domain.order.OrderSheet;
 import christmas.domain.Price;
 import christmas.domain.event.discount.*;
+import christmas.dto.DiscountEventDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -28,10 +30,10 @@ public class DiscountEventManagerTest {
     void 할인_적용_가능_이벤트_테스트_크리스마스_주말() {
         Day day = new Day(1);
 
-        Map<DiscountEvent, Price> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
+        List<DiscountEventDTO> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
         assertThat(discountEventList).satisfies(discountEvents -> {
-            assertThat(discountEvents.keySet()).extracting("class").hasSameClassAs(ChristmasDiscountEvent.class);
-            assertThat(discountEvents.keySet()).extracting("class").hasSameClassAs(HolidayDiscountEvent.class);
+            assertThat(discountEvents.get(0).getEventName()).isEqualTo("크리스마스 디데이 할인");
+            assertThat(discountEvents.get(1).getEventName()).isEqualTo("주말 할인");
         });
     }
 
@@ -40,10 +42,10 @@ public class DiscountEventManagerTest {
     void 할인_적용_가능_이벤트_평일_별() {
         Day day = new Day(31);
 
-        Map<DiscountEvent, Price> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
+        List<DiscountEventDTO> discountEventList = DiscountEventManager.getDiscountResult(day, orderSheet).getDiscountEvents();
         assertThat(discountEventList).satisfies(discountEvents -> {
-            assertThat(discountEvents.keySet()).extracting("class").hasSameClassAs(WeekDayDiscountEvent.class);
-            assertThat(discountEvents.keySet()).extracting("class").hasSameClassAs(StarDiscountEvent.class);
+            assertThat(discountEvents.get(0).getEventName()).isEqualTo("평일 할인");
+            assertThat(discountEvents.get(1).getEventName()).isEqualTo("특별 할인");
         });
     }
 }
