@@ -14,16 +14,14 @@ public class WeekDayDiscountEventTest {
     @Test
     void 할인_적용_가능_테스트() {
         Day day = new Day(3);
-        OrderSheet orderSheet = null;
-        WeekDayDiscountEvent weekDayEvent = new WeekDayDiscountEvent(day, orderSheet);
+        WeekDayDiscountEvent weekDayEvent = new WeekDayDiscountEvent(day, null);
         assertThat(weekDayEvent.isDiscountable()).isTrue();
     }
 
     @Test
     void 할인_적용_불가능_테스트() {
         Day day = new Day(2);
-        OrderSheet orderSheet = null;
-        WeekDayDiscountEvent weekDayEvent = new WeekDayDiscountEvent(day, orderSheet);
+        WeekDayDiscountEvent weekDayEvent = new WeekDayDiscountEvent(day, null);
         assertThat(weekDayEvent.isDiscountable()).isFalse();
     }
 

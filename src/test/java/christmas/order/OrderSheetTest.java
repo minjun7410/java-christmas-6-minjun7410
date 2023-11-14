@@ -1,4 +1,4 @@
-package christmas;
+package christmas.order;
 
 import christmas.domain.order.Menu;
 import christmas.domain.order.OrderSheet;

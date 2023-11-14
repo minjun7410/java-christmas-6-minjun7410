@@ -14,16 +14,14 @@ public class HolidayDiscountEventTest {
     @Test
     void 할인_적용_가능_테스트() {
         Day day = new Day(1);
-        OrderSheet orderSheet = null;
-        HolidayDiscountEvent holidayEvent = new HolidayDiscountEvent(day, orderSheet);
+        HolidayDiscountEvent holidayEvent = new HolidayDiscountEvent(day, null);
         assertThat(holidayEvent.isDiscountable()).isTrue();
     }
 
     @Test
     void 할인_적용_불가능_테스트() {
         Day day = new Day(3);
-        OrderSheet orderSheet = null;
-        HolidayDiscountEvent holidayEvent = new HolidayDiscountEvent(day, orderSheet);
+        HolidayDiscountEvent holidayEvent = new HolidayDiscountEvent(day, null);
         assertThat(holidayEvent.isDiscountable()).isFalse();
     }
 

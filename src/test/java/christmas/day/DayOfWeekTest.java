@@ -1,4 +1,4 @@
-package christmas;
+package christmas.day;
 
 import christmas.domain.day.DayOfWeek;
 import org.junit.jupiter.params.ParameterizedTest;

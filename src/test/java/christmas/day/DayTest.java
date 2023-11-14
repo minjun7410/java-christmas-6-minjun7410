@@ -1,4 +1,4 @@
-package christmas;
+package christmas.day;
 
 import christmas.domain.day.Day;
 import org.junit.jupiter.api.Test;
