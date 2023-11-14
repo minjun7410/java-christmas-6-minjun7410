@@ -1,15 +1,13 @@
 package christmas.domain.day;
 
+import christmas.constants.DayConstants;
 import christmas.constants.ErrorMessage;
 
 import java.util.List;
 
 public class Day {
-    private static final int START_DAY_OF_MONTH = 1;
-    private static final int END_DAY_OF_MONTH = 31;
-
     private final List<Integer> starDays = List.of(3, 10, 17, 24, 25, 31);
-    int day;
+    private final int day;
 
     public Day(int day) {
         this.day = day;
@@ -33,7 +31,7 @@ public class Day {
     }
 
     private void validateDayRange() {
-        if (START_DAY_OF_MONTH <= day && day <= END_DAY_OF_MONTH) return;
+        if (DayConstants.START_OF_MONTH.getDay() <= day && day <= DayConstants.END_OF_MONTH.getDay()) return;
         throw new IllegalArgumentException(ErrorMessage.INVALID_DAY.getErrorMessage());
     }
 }

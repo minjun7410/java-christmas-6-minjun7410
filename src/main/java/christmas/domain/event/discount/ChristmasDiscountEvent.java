@@ -1,23 +1,21 @@
 package christmas.domain.event.discount;
 
 import christmas.constants.AmountConstants;
+import christmas.constants.DayConstants;
 import christmas.domain.day.Day;
 
 public class ChristmasDiscountEvent implements DiscountEvent {
-    private static final int START_DAY = 1;
-    private static final int END_DAY = 25;
-
     private final Day presentDay;
     private final Day startDay;
 
     public ChristmasDiscountEvent(Day presentDay) {
         this.presentDay = presentDay;
-        this.startDay = new Day(START_DAY);
+        this.startDay = new Day(DayConstants.CHRISTMAS_START.getDay());
     }
 
     @Override
     public boolean isDiscountable() {
-        return presentDay.isInBetween(START_DAY, END_DAY);
+        return presentDay.isInBetween(DayConstants.CHRISTMAS_START.getDay(), DayConstants.CHRISTMAS_END.getDay());
     }
 
     @Override
