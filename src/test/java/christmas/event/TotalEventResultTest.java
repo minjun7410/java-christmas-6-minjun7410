@@ -9,6 +9,7 @@ import christmas.domain.event.discount.DiscountResult;
 import christmas.domain.event.present.PresentEventManager;
 import christmas.domain.event.present.PresentResult;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class TotalEventResultTest {
     private PresentResult presentResult;
     private DiscountResult discountResult;
+
     @BeforeEach
     void beforeEach() {
         Day day = new Day(20);
@@ -30,6 +32,7 @@ public class TotalEventResultTest {
         discountResult = DiscountEventManager.getDiscountResult(day,orderSheet);
     }
 
+    @DisplayName("총 혜택 금액을 계산이 올바른 지 테스트")
     @Test
     void 총_혜택금액_계산_기능_테스트() {
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);

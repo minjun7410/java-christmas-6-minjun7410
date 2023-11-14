@@ -5,6 +5,7 @@ import christmas.domain.order.OrderSheet;
 import christmas.domain.Price;
 import christmas.domain.event.discount.*;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -21,6 +22,8 @@ public class DiscountEventManagerTest {
         orders.put("티본스테이크", 1);
         orderSheet = new OrderSheet(orders);
     }
+
+    @DisplayName("할인 적용 가능한 이벤트가 크리스마스, 주말 이벤트일 때 테스트")
     @Test
     void 할인_적용_가능_이벤트_테스트_크리스마스_주말() {
         Day day = new Day(1);
@@ -32,6 +35,7 @@ public class DiscountEventManagerTest {
         });
     }
 
+    @DisplayName("할인 적용 가능한 이벤트가 평일, 별 이벤트일 때 테스트")
     @Test
     void 할인_적용_가능_이벤트_평일_별() {
         Day day = new Day(31);

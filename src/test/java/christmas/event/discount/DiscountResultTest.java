@@ -3,6 +3,7 @@ package christmas.event.discount;
 import christmas.domain.day.Day;
 import christmas.domain.order.OrderSheet;
 import christmas.domain.event.discount.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import java.util.Map;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class DiscountResultTest {
+
+    @DisplayName("모든 할인 이벤트의 계산이 올바른 지 테스트")
     @Test
     void 총_할인_금액_계산_기능_테스트() {
         Day day = new Day(1);
