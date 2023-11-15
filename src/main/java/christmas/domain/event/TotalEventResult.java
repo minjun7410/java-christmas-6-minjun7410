@@ -4,6 +4,7 @@ import christmas.domain.Badge;
 import christmas.domain.Price;
 import christmas.domain.event.discount.DiscountResult;
 import christmas.domain.event.present.PresentResult;
+import christmas.dto.BadgeDTO;
 import christmas.dto.PriceDTO;
 
 public class TotalEventResult {
@@ -24,7 +25,7 @@ public class TotalEventResult {
         return PriceDTO.from(price);
     }
 
-    public Badge getBadge() {
+    public BadgeDTO getBadge() {
         return Badge.getBadgeByDiscountedAmount(
                 calculateTotalPriceAmount());
     }

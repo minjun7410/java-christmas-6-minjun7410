@@ -9,6 +9,7 @@ import christmas.domain.event.discount.DiscountEventManager;
 import christmas.domain.event.discount.DiscountResult;
 import christmas.domain.event.present.PresentEventManager;
 import christmas.domain.event.present.PresentResult;
+import christmas.dto.BadgeDTO;
 import christmas.dto.PriceDTO;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -81,7 +82,7 @@ public class PromotionController {
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);
         outputView.printTotalDiscountPrice(totalEventResult.getDiscountPrice());
         outputView.printTotalDiscountedPrice(totalEventResult.getDiscountedPrice(orderSheet.getTotalPrice()));
-        Badge badge = totalEventResult.getBadge();
+        BadgeDTO badge = totalEventResult.getBadge();
         outputView.printBadge(badge);
     }
 }

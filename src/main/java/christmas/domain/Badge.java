@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.dto.BadgeDTO;
+
 import java.util.Arrays;
 
 public enum Badge {
@@ -16,11 +18,11 @@ public enum Badge {
         this.baseDiscountedAmount = baseDiscountedAmount;
     }
 
-    public static Badge getBadgeByDiscountedAmount(int discountedAmount) {
+    public static BadgeDTO getBadgeByDiscountedAmount(int discountedAmount) {
         for (Badge badge : Badge.values()) {
-            if (badge.baseDiscountedAmount <= discountedAmount) return badge;
+            if (badge.baseDiscountedAmount <= discountedAmount) return BadgeDTO.from(badge);
         }
-        return NONE;
+        return BadgeDTO.from(NONE);
     }
 
     @Override

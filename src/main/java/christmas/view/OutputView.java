@@ -3,10 +3,7 @@ package christmas.view;
 import christmas.domain.Badge;
 import christmas.domain.order.Menu;
 import christmas.domain.Price;
-import christmas.dto.DiscountResultDTO;
-import christmas.dto.MenuDTO;
-import christmas.dto.PresentResultDTO;
-import christmas.dto.PriceDTO;
+import christmas.dto.*;
 
 import java.util.List;
 import java.util.Map;
@@ -87,9 +84,9 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printBadge(Badge badge) {
+    public void printBadge(BadgeDTO badge) {
         System.out.print(BADGE_TOP_MESSAGE);
-        System.out.println(badge);
+        System.out.println(badge.getBadgeName());
     }
 
     private boolean hasNothing(int size) {
