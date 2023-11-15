@@ -4,6 +4,7 @@ import christmas.domain.Badge;
 import christmas.domain.order.Menu;
 import christmas.domain.Price;
 import christmas.dto.DiscountResultDTO;
+import christmas.dto.MenuDTO;
 import christmas.dto.PresentResultDTO;
 import christmas.dto.PriceDTO;
 
@@ -41,10 +42,10 @@ public class OutputView {
         System.out.println(PREVIEW_START_MESSAGE);
     }
 
-    public void printOrderSheet(Map<Menu, Integer> orderSheet) {
+    public void printOrderSheet(List<MenuDTO> orderSheet) {
         System.out.print(ORDER_SHEET_TOP_MESSAGE);
-        for (Menu menu : orderSheet.keySet()) {
-            System.out.printf(ORDER_SHEET_MESSAGE, menu.getName(), orderSheet.get(menu));
+        for (MenuDTO menu : orderSheet) {
+            System.out.printf(ORDER_SHEET_MESSAGE, menu.getMenuName(), menu.getCount());
         }
         System.out.println();
     }

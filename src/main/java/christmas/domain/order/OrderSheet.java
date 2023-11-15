@@ -2,6 +2,7 @@ package christmas.domain.order;
 
 import christmas.constants.ErrorMessage;
 import christmas.domain.Price;
+import christmas.dto.MenuDTO;
 import christmas.dto.PriceDTO;
 
 import java.util.*;
@@ -46,8 +47,10 @@ public class OrderSheet {
         return new Price(totalPrice);
     }
 
-    public Map<Menu, Integer> getOrderSheet() {
-        return orderSheet;
+    public List<MenuDTO> getOrderSheet() {
+        return orderSheet.keySet().stream()
+                .map(menu -> new MenuDTO(menu.getName(), orderSheet.get(menu)))
+                .toList();
     }
 
     public boolean isMoreThanTotal(int amount) {
