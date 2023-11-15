@@ -3,10 +3,12 @@ package christmas.event.present;
 import christmas.domain.order.Menu;
 import christmas.domain.order.OrderSheet;
 import christmas.domain.event.present.PresentEventManager;
+import christmas.dto.PresentResultDTO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -19,8 +21,8 @@ public class PresentEventManagerTest {
         menuCounts.put("바비큐립", 5);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        Map<Menu, Integer> presents = PresentEventManager.getPresentResult(orderSheet).getPresents();
-        assertThat(presents.get(Menu.CHAMPAGNE)).isEqualTo(1);
+        List<PresentResultDTO> presents = PresentEventManager.getPresentResult(orderSheet).getPresents();
+        assertThat(presents.get(0).getCount()).isEqualTo(1);
     }
 
     @DisplayName("증정 이벤트 적용 불가능할 때 증정품이 없는 지 테스트")
@@ -30,7 +32,7 @@ public class PresentEventManagerTest {
         menuCounts.put("바비큐립", 1);
         menuCounts.put("아이스크림", 1);
         OrderSheet orderSheet = new OrderSheet(menuCounts);
-        Map<Menu, Integer> presents = PresentEventManager.getPresentResult(orderSheet).getPresents();
+        List<PresentResultDTO> presents = PresentEventManager.getPresentResult(orderSheet).getPresents();
         assertThat(presents.size()).isEqualTo(0);
     }
 }

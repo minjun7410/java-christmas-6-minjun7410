@@ -4,6 +4,7 @@ import christmas.domain.Badge;
 import christmas.domain.order.Menu;
 import christmas.domain.Price;
 import christmas.dto.DiscountResultDTO;
+import christmas.dto.PresentResultDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -53,11 +54,11 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printPresents(Map<Menu, Integer> presents) {
+    public void printPresents(List<PresentResultDTO> presents) {
         System.out.print(PRESENT_TOP_MESSAGE);
         if (hasNothing(presents.size())) return;
-        for (Menu menu : presents.keySet()) {
-            System.out.printf(PRESENT_MESSAGE, menu.getName(), presents.get(menu));
+        for (PresentResultDTO presentResult : presents) {
+            System.out.printf(PRESENT_MESSAGE, presentResult.getPresentName(), presentResult.getCount());
         }
         System.out.println();
     }
