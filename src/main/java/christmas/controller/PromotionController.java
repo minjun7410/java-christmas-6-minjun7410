@@ -9,6 +9,7 @@ import christmas.domain.event.discount.DiscountEventManager;
 import christmas.domain.event.discount.DiscountResult;
 import christmas.domain.event.present.PresentEventManager;
 import christmas.domain.event.present.PresentResult;
+import christmas.dto.PriceDTO;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -68,14 +69,14 @@ public class PromotionController {
     private void printBeforeEvent(OrderSheet orderSheet) {
         outputView.printPreviewStart();
         outputView.printOrderSheet(orderSheet.getOrderSheet());
-        outputView.printTotalPriceBeforeDiscount(orderSheet.getTotalPrice());
+        outputView.printTotalPriceBeforeDiscount(PriceDTO.from(orderSheet.getTotalPrice()));
     }
 
     private void printAfterEvent(Day orderDay, OrderSheet orderSheet) {
         DiscountResult discountResult = DiscountEventManager.getDiscountResult(orderDay, orderSheet);
         PresentResult presentResult = PresentEventManager.getPresentResult(orderSheet);
         outputView.printPresents(presentResult.getPresents());
-        outputView.printEvents(discountResult.getDiscountResults(), new Price(presentResult.getTotalPresentPrice()));
+        outputView.printEvents(discountResult.getDiscountResults(), PriceDTO.from(presentResult.getTotalPresentPrice()));
 
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);
         outputView.printTotalDiscountPrice(totalEventResult.getDiscountPrice());

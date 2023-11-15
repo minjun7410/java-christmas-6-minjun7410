@@ -8,6 +8,7 @@ import christmas.domain.event.discount.DiscountEventManager;
 import christmas.domain.event.discount.DiscountResult;
 import christmas.domain.event.present.PresentEventManager;
 import christmas.domain.event.present.PresentResult;
+import christmas.dto.PriceDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,16 +37,16 @@ public class TotalEventResultTest {
     @Test
     void 총_혜택금액_계산_기능_테스트() {
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);
-        Price price = totalEventResult.getDiscountPrice();
+        PriceDTO price = totalEventResult.getDiscountPrice();
         Price priceAnswer = new Price(presentResult.getTotalPresentPrice() + discountResult.getTotalDiscountAmount());
-        assertThat(price.toString()).isEqualTo(priceAnswer.toString());
+        assertThat(price.getPrice()).isEqualTo(priceAnswer.toString());
     }
 
     @Test
     void 예상_결제_금액_계산_테스트() {
         TotalEventResult totalEventResult = new TotalEventResult(discountResult, presentResult);
-        Price price = totalEventResult.getDiscountedPrice(new Price(100_000));
+        PriceDTO price = totalEventResult.getDiscountedPrice(new Price(100_000));
         Price correctPrice = new Price(100_000 - discountResult.getTotalDiscountAmount());
-        assertThat(price.toString()).isEqualTo(correctPrice.toString());
+        assertThat(price.getPrice()).isEqualTo(correctPrice.toString());
     }
 }

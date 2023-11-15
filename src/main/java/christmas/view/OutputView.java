@@ -5,6 +5,7 @@ import christmas.domain.order.Menu;
 import christmas.domain.Price;
 import christmas.dto.DiscountResultDTO;
 import christmas.dto.PresentResultDTO;
+import christmas.dto.PriceDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -48,9 +49,9 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printTotalPriceBeforeDiscount(Price price) {
+    public void printTotalPriceBeforeDiscount(PriceDTO price) {
         System.out.print(TOTAL_BEFORE_DISCOUNT_TOP_MESSAGE);
-        System.out.printf(TOTAL_BEFORE_DISCOUNT_MESSAGE, price);
+        System.out.printf(TOTAL_BEFORE_DISCOUNT_MESSAGE, price.getPrice());
         System.out.println();
     }
 
@@ -63,25 +64,25 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printEvents(List<DiscountResultDTO> discountEvents, Price presentationsPrice) {
+    public void printEvents(List<DiscountResultDTO> discountEvents, PriceDTO presentationsPrice) {
         System.out.print(EVENTS_TOP_MESSAGE);
         if (hasNothing(discountEvents.size())) return;
         for (DiscountResultDTO event : discountEvents) {
             System.out.printf(EVENT_MESSAGE, event.getEventName(), event.getPrice());
         }
-        System.out.printf(EVENT_MESSAGE, "증정 이벤트", presentationsPrice);
+        System.out.printf(EVENT_MESSAGE, "증정 이벤트", presentationsPrice.getPrice());
         System.out.println();
     }
 
-    public void printTotalDiscountPrice(Price price) {
+    public void printTotalDiscountPrice(PriceDTO price) {
         System.out.print(TOTAL_DISCOUNT_TOP_MESSAGE);
-        System.out.printf(TOTAL_DISCOUNT_MESSAGE, price);
+        System.out.printf(TOTAL_DISCOUNT_MESSAGE, price.getPrice());
         System.out.println();
     }
 
-    public void printTotalDiscountedPrice(Price price) {
+    public void printTotalDiscountedPrice(PriceDTO price) {
         System.out.print(DISCOUNTED_PRICE_TOP_MESSAGE);
-        System.out.printf(DISCOUNTED_PRICE_MESSAGE, price);
+        System.out.printf(DISCOUNTED_PRICE_MESSAGE, price.getPrice());
         System.out.println();
     }
 
