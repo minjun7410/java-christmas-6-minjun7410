@@ -3,14 +3,13 @@ package christmas.domain.order;
 import christmas.constants.ErrorMessage;
 import christmas.domain.Price;
 import christmas.dto.MenuDTO;
-import christmas.dto.PriceDTO;
 
 import java.util.*;
 
 public class OrderSheet {
     private static final int TOTAL_COUNT_LIMIT = 20;
 
-    private Map<Menu, Integer> orderSheet;
+    private final Map<Menu, Integer> orderSheet;
     private int totalPrice;
 
     public OrderSheet(Map<String, Integer> menus) {
@@ -68,6 +67,7 @@ public class OrderSheet {
         int drinkCount = (int) orderSheet.keySet().stream()
                 .filter(menu -> menu.compareType(MenuType.DRINK))
                 .count();
-        if (drinkCount == orderSheet.size()) throw new IllegalArgumentException(ErrorMessage.ONLY_DRINK.getErrorMessage());
+        if (drinkCount == orderSheet.size())
+            throw new IllegalArgumentException(ErrorMessage.ONLY_DRINK.getErrorMessage());
     }
 }

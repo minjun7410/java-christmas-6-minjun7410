@@ -1,12 +1,8 @@
 package christmas.view;
 
-import christmas.domain.Badge;
-import christmas.domain.order.Menu;
-import christmas.domain.Price;
 import christmas.dto.*;
 
 import java.util.List;
-import java.util.Map;
 
 public class OutputView {
     private static final String ERROR_MESSAGE = "[ERROR] %s\n";

@@ -55,6 +55,7 @@ public class InputView {
     }
 
     private void validateDuplicatedMenu(Set<String> menuNames, String menuName) {
-        if (menuNames.contains(menuName)) throw new IllegalArgumentException(ErrorMessage.DUPLICATED_MENU.getErrorMessage());
+        if (menuNames.contains(menuName))
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_MENU.getErrorMessage());
     }
 }

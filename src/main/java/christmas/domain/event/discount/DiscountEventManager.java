@@ -27,7 +27,7 @@ public enum DiscountEventManager {
             return new WeekDayDiscountEvent(day, orderSheet);
         }
     },
-    STAR{
+    STAR {
         @Override
         protected DiscountEvent create(Day day, OrderSheet orderSheet) {
             return new StarDiscountEvent(day);

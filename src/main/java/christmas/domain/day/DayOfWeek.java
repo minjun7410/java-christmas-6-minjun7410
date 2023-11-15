@@ -11,7 +11,8 @@ public enum DayOfWeek {
     THURSDAY(7),
     NOT_DAY(8);
 
-    private int firstDay;
+    private final int firstDay;
+
     private DayOfWeek(int firstDay) {
         this.firstDay = firstDay;
     }

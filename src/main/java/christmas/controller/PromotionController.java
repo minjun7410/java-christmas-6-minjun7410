@@ -35,7 +35,7 @@ public class PromotionController {
     private Day getOrderDay() {
         boolean isInValidInput = true;
         Day orderDay = null;
-        while(isInValidInput) {
+        while (isInValidInput) {
             try {
                 int dayNumber = inputView.readDate();
                 orderDay = new Day(dayNumber);
@@ -50,7 +50,7 @@ public class PromotionController {
     private OrderSheet getOrderSheet() {
         boolean isInValidInput = true;
         OrderSheet orderSheet = null;
-        while(isInValidInput) {
+        while (isInValidInput) {
             try {
                 Map<String, Integer> orderMenus = inputView.readMenu();
                 orderSheet = new OrderSheet(orderMenus);

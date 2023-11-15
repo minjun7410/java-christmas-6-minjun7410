@@ -7,8 +7,7 @@ public enum AmountConstants {
     HOLIDAY_UNIT(2_023),
     STAR_DISCOUNT(1_000),
     WEEKDAY_UNIT(2_023),
-    CHAMPAGNE_PRESENT_BASE(120_000),
-    ;
+    CHAMPAGNE_PRESENT_BASE(120_000);
 
     private final int amount;
 
