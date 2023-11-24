@@ -17,7 +17,7 @@ public class OutputView {
     private static final String EVENTS_TOP_MESSAGE = "<혜택 내역>\n";
     private static final String EVENT_MESSAGE = "%s: -%s원\n";
     private static final String TOTAL_DISCOUNT_TOP_MESSAGE = "<총혜택 금액>\n";
-    private static final String TOTAL_DISCOUNT_MESSAGE = "%s원\n";
+    private static final String TOTAL_DISCOUNT_MESSAGE = "-%s원\n";
     private static final String DISCOUNTED_PRICE_TOP_MESSAGE = "<할인 후 예상 결제 금액>\n";
     private static final String DISCOUNTED_PRICE_MESSAGE = "%s원\n";
     private static final String BADGE_TOP_MESSAGE = "<12월 이벤트 배지>\n";
