@@ -2,6 +2,7 @@ package christmas.domain.day;
 
 import christmas.constants.DayConstants;
 import christmas.constants.ErrorMessage;
+import christmas.dto.DayDTO;
 
 import java.util.List;
 
@@ -28,6 +29,10 @@ public class Day {
 
     public int getDifference(Day targetDay) {
         return this.day - targetDay.day;
+    }
+
+    public DayDTO getDay() {
+        return new DayDTO(day);
     }
 
     private void validateDayRange() {

@@ -7,7 +7,7 @@ import java.util.List;
 public class OutputView {
     private static final String ERROR_MESSAGE = "[ERROR] %s\n";
     private static final String START_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.\n";
-    private static final String PREVIEW_START_MESSAGE = "12월 3일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n";
+    private static final String PREVIEW_START_MESSAGE = "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n";
     private static final String ORDER_SHEET_TOP_MESSAGE = "<주문 메뉴>\n";
     private static final String ORDER_SHEET_MESSAGE = "%s %d개\n";
     private static final String TOTAL_BEFORE_DISCOUNT_TOP_MESSAGE = "<할인 전 총주문 금액>\n";
@@ -31,8 +31,8 @@ public class OutputView {
         System.out.printf(ERROR_MESSAGE, message);
     }
 
-    public void printPreviewStart() {
-        System.out.println(PREVIEW_START_MESSAGE);
+    public void printPreviewStart(DayDTO day) {
+        System.out.printf(PREVIEW_START_MESSAGE, day.getDay());
     }
 
     public void printOrderSheet(List<MenuDTO> orderSheet) {

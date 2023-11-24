@@ -10,6 +10,7 @@ import christmas.domain.event.discount.DiscountResult;
 import christmas.domain.event.present.PresentEventManager;
 import christmas.domain.event.present.PresentResult;
 import christmas.dto.BadgeDTO;
+import christmas.dto.DayDTO;
 import christmas.dto.PriceDTO;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -63,12 +64,12 @@ public class PromotionController {
     }
 
     private void printPreview(Day orderDay, OrderSheet orderSheet) {
+        outputView.printPreviewStart(orderDay.getDay());
         printBeforeEvent(orderSheet);
         printAfterEvent(orderDay, orderSheet);
     }
 
     private void printBeforeEvent(OrderSheet orderSheet) {
-        outputView.printPreviewStart();
         outputView.printOrderSheet(orderSheet.getOrderSheet());
         outputView.printTotalPriceBeforeDiscount(PriceDTO.from(orderSheet.getTotalPrice()));
     }
