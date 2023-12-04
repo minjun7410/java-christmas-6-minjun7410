@@ -15,7 +15,7 @@ public class OrderSheet {
     public OrderSheet(Map<String, Integer> menus) {
         orderSheet = new HashMap<>();
         validateExceedMenuCount(menus);
-        countMenu(menus);
+        convertToMenu(menus);
         calculateTotalPrice();
         validateOnlyDrink();
     }
@@ -35,7 +35,7 @@ public class OrderSheet {
         return totalPrice;
     }
 
-    private void countMenu(Map<String, Integer> menus) {
+    private void convertToMenu(Map<String, Integer> menus) {
         for (String menuName : menus.keySet()) {
             Menu menu = Menu.getMenuByName(menuName);
             orderSheet.put(menu, menus.get(menuName));
