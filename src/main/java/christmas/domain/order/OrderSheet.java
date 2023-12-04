@@ -64,10 +64,9 @@ public class OrderSheet {
     }
 
     private void validateOnlyDrink() {
-        int drinkCount = (int) orderSheet.keySet().stream()
-                .filter(menu -> menu.compareType(MenuType.DRINK))
-                .count();
-        if (drinkCount == orderSheet.size())
+        boolean isAllDrink = orderSheet.keySet().stream()
+                .allMatch((menu) -> menu.compareType(MenuType.DRINK));
+        if (isAllDrink)
             throw new IllegalArgumentException(ErrorMessage.ONLY_DRINK.getErrorMessage());
     }
 }
