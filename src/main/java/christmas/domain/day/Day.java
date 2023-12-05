@@ -4,6 +4,8 @@ import christmas.constants.DayConstants;
 import christmas.constants.ErrorMessage;
 import christmas.dto.DayDTO;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Day {
@@ -24,7 +26,8 @@ public class Day {
     }
 
     public boolean isHoliday() {
-        return DayOfWeek.isHoliday(day);
+        DayOfWeek dayOfWeek = LocalDate.of(2023, 12, day).getDayOfWeek();
+        return (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY);
     }
 
     public int getDifference(Day targetDay) {
